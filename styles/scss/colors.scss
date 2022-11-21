@@ -1,0 +1,21 @@
+// Any variables in ./bootstrap/scss/_variables.scss can be changed here
+
+// Example
+// Overriding the colors and creating new ones
+$primary: #ea4e48;
+$secondary: #9fa8d1;
+$tertiary: #212529; // created
+$dark: #f1eff1;
+$light: #4db7d1;
+$white: white;
+$black: black;
+
+// Redefining the theme-colors
+// These "keywords" can be used as bg-tertiary, text-tertiary classes and so on...
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "tertiary": $tertiary,
+  "dark": $dark,
+  "light": $light,
+);

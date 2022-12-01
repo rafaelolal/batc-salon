@@ -15,10 +15,10 @@ export default function IndexPage() {
     }
   );
 
-  return (<>
+  return <>
     <h1>Hello World</h1>
 
     <p>{query?.docs[0].data().Name}</p>
     <p>{query?.docs[1].data().Name}</p>
-  </>);
+  </>;
 }

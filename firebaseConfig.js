@@ -16,11 +16,11 @@ const firebaseConfig = {
 
 
 // Initialize Firebase
-export const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 
 // Initialize Firebase Authentication and get a reference to the service
 // Import the auth variable below to access the current user
 // Example:
-// import { auth } from "../firebase";
+// import { auth } from "../firebaseConfig";
 // auth.currentUser.email
 export const auth = getAuth(app);

@@ -14,21 +14,33 @@ export default function SignUpPage() {
 
   function submitHandler(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const email = emailRef.current!.value;
-    const password = passwordRef.current!.value;
+
+    if(emailRef.current == null || passwordRef.current == null) {
+      addToast({ status: 500, message: "Form not yet hydrated" });
+      return;
+    }
+
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
 
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
         const currentUser = auth.currentUser;
         console.log({ user, currentUser });
-        emailRef.current!.value = "";
-        passwordRef.current!.value = "";
-        addToast!({ status: 200, message: "Successfully signed up" });
+
+        if(emailRef.current == null || passwordRef.current == null) {
+          addToast({ status: 500, message: "Form not yet hydrated" });
+          return;
+        }
+
+        emailRef.current.value = "";
+        passwordRef.current.value = "";
+        addToast({ status: 200, message: "Successfully signed up" });
         router.push("/");
       })
       .catch((error) => {
-        addToast!({
+        addToast({
           status: 500,
           message: `Error ${error.code}: ${error.message}`,
         });

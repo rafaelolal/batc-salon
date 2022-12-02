@@ -1,4 +1,4 @@
 // Write global styles above the imports!
 // Any new files you write under ./scss, import them above the bootstrap import
-@import "./scss/colors";
-@import "./bootstrap/scss/bootstrap";
+@import "./colors";
+@import "./node_modules/bootstrap/scss/bootstrap.scss"

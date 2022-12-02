@@ -48,14 +48,16 @@ export function AppWrapper({ children }: { children: React.ReactNode }) {
     }
   }, [toasts]);
 
-  onAuthStateChanged(auth, (user) => {
-    console.log("onAuthStateChanged executed");
-    if (user) {
-      setUser(user);
-    } else {
-      setUser(null);
-    }
-  });
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      console.log("onAuthStateChanged executed");
+      if (user) {
+        setUser(user);
+      } else {
+        setUser(null);
+      }
+    });
+  }, []);
 
   return (
     <>

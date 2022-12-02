@@ -22,10 +22,10 @@ export default function IndexPage() {
       .signOut()
       .then(() => {
         console.log("SIGNED OUT");
-        addToast!({ status: 200, message: "Successfully signed out" });
+        addToast({ status: 200, message: "Successfully signed out" });
       })
       .catch((error) => {
-        addToast!({
+        addToast({
           status: 500,
           message: `Error ${error.code}: ${error.message}`,
         });

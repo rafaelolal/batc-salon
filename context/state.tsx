@@ -1,4 +1,5 @@
 import {
+  Context,
   createContext,
   useContext,
   useEffect,
@@ -11,13 +12,10 @@ import ToastList from "../components/toasts/toast-list";
 type ToastListType = { status: number; message: string }[];
 type ContextType = {
   user: User | null;
-  addToast: ((toast: { status: number; message: string }) => void) | null;
+  addToast: ((toast: { status: number; message: string }) => void);
 };
 
-const AppContext = createContext<ContextType>({
-  user: null,
-  addToast: null,
-});
+let AppContext: Context<ContextType>;
 
 export function AppWrapper({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
@@ -31,6 +29,8 @@ export function AppWrapper({ children }: { children: React.ReactNode }) {
     user,
     addToast,
   };
+
+  AppContext = createContext(sharedState);
 
   useEffect(() => {
     function removeToast() {

@@ -1,10 +1,9 @@
-import { app } from "../firebaseConfig";
-import { getFirestore, collection, getDocs, QuerySnapshot, DocumentData } from "firebase/firestore";
+import { db } from "../firebaseConfig";
+import { collection, getDocs, QuerySnapshot, DocumentData } from "firebase/firestore";
 import { useState } from "react";
 
 export default function IndexPage() {
   const [query, setQuery] = useState<QuerySnapshot<DocumentData> | null>(null);
-  const db = getFirestore(app);
 
   getDocs(collection(db, "test")).then(
     function(result) {

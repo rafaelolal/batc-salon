@@ -5,6 +5,8 @@ import { useAppContext } from "../context/state";
 import { auth } from "../firebaseConfig";
 
 export default function SignInPage() {
+  const { setToast } = useAppContext();
+
   const router = useRouter();
 
   const emailRef = useRef<HTMLInputElement>(null);
@@ -16,18 +18,17 @@ export default function SignInPage() {
     const password = passwordRef.current!.value;
 
     signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        const currentUser = auth.currentUser;
-        console.log({ user, currentUser });
+      .then(() => {
         emailRef.current!.value = "";
         passwordRef.current!.value = "";
+        setToast!({ status: 200, message: "Successfully signed in" });
         router.push("/");
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.table({ errorCode, errorMessage });
+        setToast!({
+          status: 500,
+          message: `Error ${error.code}: ${error.message}`,
+        });
       });
   }
 

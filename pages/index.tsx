@@ -3,12 +3,20 @@ import { useAppContext } from "../context/state";
 import { auth } from "../firebaseConfig";
 
 export default function IndexPage() {
-  const { user } = useAppContext();
+  const { user, setToast } = useAppContext();
 
   function signOutHandler() {
-    console.log(user!.email);
-    auth.signOut();
-    console.log("SIGNED OUT");
+    auth
+      .signOut()
+      .then(() => {
+        setToast!({ status: 200, message: "Successfully signed out" });
+      })
+      .catch((error) => {
+        setToast!({
+          status: 500,
+          message: `Error ${error.code}: ${error.message}`,
+        });
+      });
   }
 
   return (

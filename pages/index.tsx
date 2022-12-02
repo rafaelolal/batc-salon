@@ -1,4 +1,4 @@
-import { app, db, auth } from "../firebaseConfig";
+import { db, auth } from "../firebaseConfig";
 import { useAppContext } from "../context/state";
 import { collection, getDocs, QuerySnapshot, DocumentData } from "firebase/firestore";
 import { useState } from "react";

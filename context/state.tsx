@@ -1,7 +1,5 @@
 import {
   createContext,
-  Dispatch,
-  SetStateAction,
   useContext,
   useEffect,
   useState,
@@ -29,16 +27,16 @@ export function AppWrapper({ children }: { children: React.ReactNode }) {
     setToasts(toasts.concat([toast]));
   }
 
-  function removeToast() {
-    setToasts(toasts.slice(1, toasts.length));
-  }
-
   const sharedState = {
     user,
     addToast,
   };
 
   useEffect(() => {
+    function removeToast() {
+      setToasts(toasts.slice(1, toasts.length));
+    }
+
     if (toasts) {
       const timer = setTimeout(() => {
         removeToast();

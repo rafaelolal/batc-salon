@@ -1,13 +1,12 @@
-import { app, auth } from "../firebaseConfig";
+import { app, db, auth } from "../firebaseConfig";
 import { useAppContext } from "../context/state";
-import { getFirestore, collection, getDocs, QuerySnapshot, DocumentData } from "firebase/firestore";
+import { collection, getDocs, QuerySnapshot, DocumentData } from "firebase/firestore";
 import { useState } from "react";
 import Link from "next/link";
 
 export default function IndexPage() {
   const [query, setQuery] = useState<QuerySnapshot<DocumentData> | null>(null);
   const { user, addToast } = useAppContext();
-  const db = getFirestore(app);
 
   getDocs(collection(db, "test")).then(
     function(result) {

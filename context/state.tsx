@@ -33,7 +33,7 @@ export function AppWrapper({ children }: { children: React.ReactNode }) {
     setToasts(toasts.slice(1, toasts.length));
   }
 
-  let sharedState = {
+  const sharedState = {
     user,
     addToast,
   };

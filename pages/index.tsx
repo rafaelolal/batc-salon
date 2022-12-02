@@ -1,21 +1,30 @@
 import { db, auth } from "../firebaseConfig";
 import { useAppContext } from "../context/state";
-import { collection, getDocs, QuerySnapshot, DocumentData } from "firebase/firestore";
-import { useState } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 
 export default function IndexPage() {
-  const [query, setQuery] = useState<QuerySnapshot<DocumentData> | null>(null);
+  const [query, setQuery] = useState<string[]>([]);
   const { user, addToast } = useAppContext();
 
-  getDocs(collection(db, "test")).then(
-    function(result) {
-      setQuery(result);
-    },
-    function(error) {
-      throw error;
-    }
-  );
+  console.log("rendering index");
+
+  useEffect(() => {
+    console.log("calling useEffect for firestore query");
+    getDocs(collection(db, "test")).then(
+      (result) => {
+        console.log("set query");
+        setQuery(result.docs.map((doc) => {
+          const name: string = doc.data().Name;
+          return name;
+        }));
+      },
+      (error) => {
+        addToast({ status: 500, message: `Error: ${error}` });
+      }
+    );
+  }, [addToast]);
 
   function signOutHandler() {
     auth
@@ -32,10 +41,18 @@ export default function IndexPage() {
       });
   }
 
+  let dbList;
+  if(query == null) {
+    dbList = null;
+  } else {
+    dbList = query.map((name) => {
+      return <li key={name}>{name}</li>;
+    });
+  }
+
   return <>
     <h1>Firestore Stuff</h1>
-    <p>{query?.docs[0].data().Name}</p>
-    <p>{query?.docs[1].data().Name}</p>
+    <ul>{dbList}</ul>
 
     <hr/>
 

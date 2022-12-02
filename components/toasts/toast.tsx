@@ -12,11 +12,7 @@ const statusCodes: { [key: number]: string } = {
 
 export default function Toast(props: ToastPropType) {
   return (
-    <div
-      className={`m-3 p-3 position-fixed bottom-0 end-0 bg-${
-        statusCodes[props.status]
-      }`}
-    >
+    <div className={`row mb-3 me-3 p-3 bg-${statusCodes[props.status]}`}>
       <small>{props.message}</small>
     </div>
   );

@@ -5,7 +5,7 @@ import { auth } from "../firebaseConfig";
 import { useAppContext } from "../context/state";
 
 export default function SignUpPage() {
-  const { setToast } = useAppContext();
+  const { addToast } = useAppContext();
 
   const router = useRouter();
 
@@ -24,11 +24,11 @@ export default function SignUpPage() {
         console.log({ user, currentUser });
         emailRef.current!.value = "";
         passwordRef.current!.value = "";
-        setToast!({ status: 200, message: "Successfully signed up" });
+        addToast!({ status: 200, message: "Successfully signed up" });
         router.push("/");
       })
       .catch((error) => {
-        setToast!({
+        addToast!({
           status: 500,
           message: `Error ${error.code}: ${error.message}`,
         });

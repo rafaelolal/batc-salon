@@ -5,7 +5,7 @@ import { useAppContext } from "../context/state";
 import { auth } from "../firebaseConfig";
 
 export default function SignInPage() {
-  const { setToast } = useAppContext();
+  const { addToast } = useAppContext();
 
   const router = useRouter();
 
@@ -21,11 +21,11 @@ export default function SignInPage() {
       .then(() => {
         emailRef.current!.value = "";
         passwordRef.current!.value = "";
-        setToast!({ status: 200, message: "Successfully signed in" });
+        addToast!({ status: 200, message: "Successfully signed in" });
         router.push("/");
       })
       .catch((error) => {
-        setToast!({
+        addToast!({
           status: 500,
           message: `Error ${error.code}: ${error.message}`,
         });

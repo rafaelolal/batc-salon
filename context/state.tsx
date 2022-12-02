@@ -8,39 +8,47 @@ import {
 } from "react";
 import { onAuthStateChanged, User } from "firebase/auth";
 import { auth } from "../firebaseConfig";
-import Toast from "../components/toast";
+import ToastList from "../components/toasts/toast-list";
 
-type ToastType = { status: number | null; message: string | null };
+type ToastListType = { status: number; message: string }[];
 type ContextType = {
   user: User | null;
-  setToast: Dispatch<SetStateAction<ToastType>> | null;
+  addToast: ((toast: { status: number; message: string }) => void) | null;
 };
 
-const AppContext = createContext<ContextType>({ user: null, setToast: null });
+const AppContext = createContext<ContextType>({
+  user: null,
+  addToast: null,
+});
 
 export function AppWrapper({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
-  const [toast, setToast] = useState<ToastType>({
-    message: null,
-    status: null,
-  });
+  const [toasts, setToasts] = useState<ToastListType>([]);
+
+  function addToast(toast: { status: number; message: string }) {
+    setToasts(toasts.concat([toast]));
+  }
+
+  function removeToast() {
+    setToasts(toasts.slice(1, toasts.length));
+  }
 
   let sharedState = {
     user,
-    setToast,
+    addToast,
   };
 
   useEffect(() => {
-    if (toast.status) {
+    if (toasts) {
       const timer = setTimeout(() => {
-        setToast({ message: null, status: null });
+        removeToast();
       }, 5000);
 
       return () => {
         clearTimeout(timer);
       };
     }
-  }, [toast]);
+  }, [toasts]);
 
   onAuthStateChanged(auth, (user) => {
     console.log("onAuthStateChanged executed");
@@ -53,9 +61,7 @@ export function AppWrapper({ children }: { children: React.ReactNode }) {
 
   return (
     <>
-      {toast.message && (
-        <Toast status={toast.status!} message={toast.message} />
-      )}
+      {toasts && <ToastList toasts={toasts} />}
       <AppContext.Provider value={sharedState}>{children}</AppContext.Provider>
     </>
   );

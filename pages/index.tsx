@@ -1,21 +1,15 @@
 import { db, auth } from "../firebaseConfig";
 import { useAppContext } from "../context/state";
-import { collection, getDocs, QuerySnapshot, DocumentData } from "firebase/firestore";
-import { useState } from "react";
+import { collection, getDocs } from "firebase/firestore";
 import Link from "next/link";
+import { GetServerSideProps } from "next";
 
-export default function IndexPage() {
-  const [query, setQuery] = useState<QuerySnapshot<DocumentData> | null>(null);
+type IndexProps = {
+  query: string[]
+}
+
+export default function IndexPage(props: IndexProps) {
   const { user, addToast } = useAppContext();
-
-  getDocs(collection(db, "test")).then(
-    function(result) {
-      setQuery(result);
-    },
-    function(error) {
-      throw error;
-    }
-  );
 
   function signOutHandler() {
     auth
@@ -32,10 +26,18 @@ export default function IndexPage() {
       });
   }
 
+  let dbList;
+  if(props.query == null) {
+    dbList = null;
+  } else {
+    dbList = props.query.map((name) => {
+      return <li key={name}>{name}</li>;
+    });
+  }
+
   return <>
     <h1>Firestore Stuff</h1>
-    <p>{query?.docs[0].data().Name}</p>
-    <p>{query?.docs[1].data().Name}</p>
+    <ul>{dbList}</ul>
 
     <hr/>
 
@@ -57,3 +59,14 @@ export default function IndexPage() {
     </button>
   </>;
 }
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const query = await getDocs(collection(db, "test"));
+  const result: string[] = query.docs.map((doc) => {
+    const name: string = doc.data().Name;
+    return name;
+  });
+
+  const props: IndexProps = { query: result };
+  return { props };
+};

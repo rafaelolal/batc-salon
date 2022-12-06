@@ -37,7 +37,7 @@ export function AppWrapper({ children }: { children: React.ReactNode }) {
       setToasts(toasts.slice(1, toasts.length));
     }
 
-    if (toasts) {
+    if (toasts.length != 0) {
       const timer = setTimeout(() => {
         removeToast();
       }, 5000);

@@ -43,5 +43,5 @@
             "always"
         ]
     },
-    "ignorePatterns": [ "styles/bootstrap/**" ]
+    "ignorePatterns": [ "styles/bootstrap/**", "public/**" ]
 }

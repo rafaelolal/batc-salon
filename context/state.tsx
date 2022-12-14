@@ -32,6 +32,10 @@ export function AppWrapper({ children }: { children: React.ReactNode }) {
         clearTimeout(timer);
       };
     }
+
+    function removeToast() {
+      setToasts(toasts.slice(1, toasts.length));
+    }
   }, [toasts]);
 
   useEffect(() => {
@@ -46,10 +50,6 @@ export function AppWrapper({ children }: { children: React.ReactNode }) {
 
   function addToast(toast: { status: number; message: string }) {
     setToasts(toasts.concat([toast]));
-  }
-
-  function removeToast() {
-    setToasts(toasts.slice(1, toasts.length));
   }
 
   return (

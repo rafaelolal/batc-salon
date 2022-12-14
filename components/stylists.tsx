@@ -22,13 +22,17 @@ export default function Stylists() {
         addToast({ status: 500, message: error });
       }
     );
-  }, []);
+  }, [addToast]);
+
+  let i = 0;
 
   return <>
     <h1>Meet the Stylists!</h1>
 
     {stylists.map((x) => {
-      return <Stylist name={x.name} img={x.img}/>;
+      return <span key={i++}>
+        <Stylist name={x.name} img={x.img}/>
+      </span>;
     })}
   </>;
 }

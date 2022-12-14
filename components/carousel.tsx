@@ -14,7 +14,7 @@ export default function Carousel() {
               className="card-img"
               src="/images/carousel/carousel1.jpg"
               alt="alt 1"
-              style={{ objectFit: "cover", opacity: 0.5}}
+              style={{ objectFit: "cover", opacity: 0.5 }}
               fill
               placeholder="blur"
               blurDataURL="https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg"
@@ -31,7 +31,7 @@ export default function Carousel() {
               className="card-img"
               src="/images/carousel/carousel2.jpg"
               alt="alt 1"
-              style={{ objectFit: "cover", opacity: 0.5}}
+              style={{ objectFit: "cover", opacity: 0.5 }}
               fill
               placeholder="blur"
               blurDataURL="https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg"
@@ -48,7 +48,7 @@ export default function Carousel() {
               className="card-img"
               src="/images/carousel/carousel3.jpg"
               alt="alt 1"
-              style={{ objectFit: "cover", opacity: 0.5}}
+              style={{ objectFit: "cover", opacity: 0.5 }}
               fill
               placeholder="blur"
               blurDataURL="https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg"

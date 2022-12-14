@@ -1,9 +1,9 @@
 import Stylist from "./stylist";
 import { StylistProps } from "./stylist";
-import {collection, getDocs} from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 import { useEffect, useState } from "react";
-import {useAppContext} from "../context/state";
+import { useAppContext } from "../context/state";
 
 export default function Stylists() {
   const addToast = useAppContext().addToast;
@@ -30,5 +30,5 @@ export default function Stylists() {
     {stylists.map((x) => {
       return <Stylist name={x.name} img={x.img}/>;
     })}
-  </>
+  </>;
 }

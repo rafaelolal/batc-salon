@@ -9,7 +9,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <AppWrapper>
       <Script
-      type="text/javascript"
+        type="text/javascript"
         src="js/bootstrap.bundle.min.js"
         strategy="beforeInteractive"
       />

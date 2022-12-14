@@ -1,3 +1,3 @@
 export default function Testimonials() {
-  return <p>Testimonials</p>
+  return <p>Testimonials</p>;
 }

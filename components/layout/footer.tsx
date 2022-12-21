@@ -1,3 +1,5 @@
 export default function Footer() {
-  return <p>Footer</p>;
+  return <div className="bg-light overflow-hidden">
+    <p>Footer</p>
+  </div>;
 }

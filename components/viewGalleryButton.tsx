@@ -1,29 +1,43 @@
-import {useState} from "react";
+import { useCallback, useEffect, useState } from "react";
 
 export default function ViewGalleryButton() {
   const [ currentlyViewing, setCurrentlyViewing ] = useState(false);
 
-  function clickHandler() {
-    let index_top = document.getElementById("index-top");
-    let index_bottom = document.getElementById("index-bottom");
-
-    let new_height;
+  const toggle = useCallback(() => {
+    let new_class;
+    let old_class;
     if(currentlyViewing) {
-      new_height = "auto";
+      new_class = "-animated-shown";
+      old_class = "-animated-hidden";
       setCurrentlyViewing(false);
     }
     else {
-      new_height = "0";
+      old_class = "-animated-shown";
+      new_class = "-animated-hidden";
       setCurrentlyViewing(true);
     }
 
-    index_top!.style.height = new_height;
-    index_bottom!.style.height = new_height;
-  }
+    const index_top = document.getElementById("index-top");
+    const index_bottom = document.getElementById("index-bottom");
+    if(index_top != null && index_bottom != null) { // Should always be true
+      index_top.classList.replace(`top${old_class}`, `top${new_class}`);
+      index_bottom.classList.replace(`bottom${old_class}`, `bottom${new_class}`);
+    }
+  }, [currentlyViewing, setCurrentlyViewing]);
 
-  return <div style={{padding:"200px"}}>
-    <button className="mx-auto bg-light p-4 text-center" style={{display:"block"}} onClick={clickHandler}>
+  const escPress = useCallback((event: KeyboardEvent) => {
+    if(event.key === "Escape" && currentlyViewing) {
+      toggle();
+    }
+  }, [toggle, currentlyViewing]);
+
+  useEffect(() => {
+    document.addEventListener("keydown", escPress);
+  }, [escPress]);
+
+  return <div style={{ padding:"200px" }}>
+    {!currentlyViewing && <button className="mx-auto bg-light p-4 text-center" style={{ display:"block" }} onClick={toggle}>
       <h2>View Gallery</h2>
-    </button>
+    </button>}
   </div>;
 }

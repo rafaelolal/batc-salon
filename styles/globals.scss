@@ -13,10 +13,35 @@ $navbar-light-hover-color: $secondary;
   z-index: -1;
 }
 
-.index-top {
-  transition: all 0.3s;
+@mixin index-animated-shown {
+  position: relative;
+  opacity: 1;
+  transition: opacity 1s, bottom 1s, top 1s;
 }
 
-.index-bottom {
-  transition: all 0.3s;
+@mixin index-animated-hidden {
+  position: relative;
+  opacity: 0;
+  transition: opacity 1s, bottom 1s, top 1s;
 }
+
+.top-animated-shown {
+  @include index-animated-shown;
+  bottom: 0px;
+}
+
+.top-animated-hidden {
+  @include index-animated-hidden;
+  bottom: 200px;
+}
+
+.bottom-animated-shown {
+  @include index-animated-shown;
+  top: 0px;
+}
+
+.bottom-animated-hidden {
+  @include index-animated-hidden;
+  top: 200px;
+}
+

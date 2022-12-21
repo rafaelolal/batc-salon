@@ -1,9 +1,9 @@
 import { TestimonialType } from "../types/testimonial";
 import Testimonial from "./testimonial";
 import { useEffect, useState } from "react";
-import {collection, getDocs} from "firebase/firestore";
-import {db} from "../firebaseConfig";
-import {useAppContext} from "../context/state";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../firebaseConfig";
+import { useAppContext } from "../context/state";
 
 export default function Testimonials() {
   const addToast = useAppContext().addToast;
@@ -21,14 +21,14 @@ export default function Testimonials() {
       (error) => {
         addToast({ status: 500, message: error });
       }
-    )
-  }, [addToast])
+    );
+  }, [addToast]);
 
   const testimonial_components = [];
   for(let i = 0; i < testimonials.length; i++) {
     testimonial_components.push(<div className="col-3">
       <Testimonial testimonial={testimonials[i]} />
-   </div>);
+    </div>);
   }
 
   return <>

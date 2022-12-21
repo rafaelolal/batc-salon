@@ -24,10 +24,7 @@ export default function SignUpPage() {
     const password = passwordRef.current.value;
 
     createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        const currentUser = auth.currentUser;
-
+      .then(() => {
         if (emailRef.current == null || passwordRef.current == null) {
           addToast({ status: 500, message: "Form not yet hydrated" });
           return;

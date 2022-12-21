@@ -1,18 +1,16 @@
 import Carousel from "../components/carousel";
 import QRCode from "../components/QRCode";
 import { collection, getDocs } from "firebase/firestore";
-import Link from "next/link";
 import { GetServerSideProps } from "next";
 import { CarouselPropsType, QRCodePropsType } from "../types/indexPropsTypes";
-import { useAppContext } from "../context/state";
 import { db } from "../firebaseConfig";
 
-export default function IndexPage(props: {
+type IndexProps = {
   carousel: CarouselPropsType;
   qRCode: QRCodePropsType;
-}) {
-  const { user, addToast } = useAppContext();
+}
 
+export default function IndexPage(props: IndexProps) {
   return (
     <div className="bg-light">
       <Carousel data={props.carousel} />
@@ -24,10 +22,15 @@ export default function IndexPage(props: {
 export const getServerSideProps: GetServerSideProps = async () => {
   const query = await getDocs(collection(db, "content"));
 
-  const props: IndexProps = {};
+  const props_untyped: { [key: string]: CarouselPropsType | QRCodePropsType } = {};
   for (const doc of query.docs) {
-    props[doc.id] = doc.data();
+    props_untyped[doc.id] = doc.data() as CarouselPropsType | QRCodePropsType;
   }
+
+  const props: IndexProps = {
+    carousel: props_untyped["carousel"] as CarouselPropsType,
+    qRCode: props_untyped["qRCode"] as QRCodePropsType
+  };
 
   return { props };
 };

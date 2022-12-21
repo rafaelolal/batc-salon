@@ -4,6 +4,8 @@ import { collection, getDocs } from "firebase/firestore";
 import Link from "next/link";
 import { GetServerSideProps } from "next";
 import { CarouselPropsType, QRCodePropsType } from "../types/indexPropsTypes";
+import { useAppContext } from "../context/state";
+import { db } from "../firebaseConfig";
 
 export default function IndexPage(props: {
   carousel: CarouselPropsType;

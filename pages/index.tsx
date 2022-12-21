@@ -1,5 +1,3 @@
-import { db, auth } from "../firebaseConfig";
-import { useAppContext } from "../context/state";
 import Carousel from "../components/carousel";
 import QRCode from "../components/QRCode";
 import { collection, getDocs } from "firebase/firestore";

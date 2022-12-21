@@ -30,7 +30,11 @@ export default function Dashboard() {
               aria-describedby="keyInputLabel"
               ref={keyRef}
             />
-            <button type="submit" className="btn btn-primary" onClick={submitHandler}>
+            <button
+              type="submit"
+              className="btn btn-primary"
+              onClick={submitHandler}
+            >
               Submit
             </button>
           </div>

@@ -15,7 +15,7 @@ export default function SignUpPage() {
   function submitHandler(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    if(emailRef.current == null || passwordRef.current == null) {
+    if (emailRef.current == null || passwordRef.current == null) {
       addToast({ status: 500, message: "Form not yet hydrated" });
       return;
     }
@@ -27,9 +27,8 @@ export default function SignUpPage() {
       .then((userCredential) => {
         const user = userCredential.user;
         const currentUser = auth.currentUser;
-        console.log({ user, currentUser });
 
-        if(emailRef.current == null || passwordRef.current == null) {
+        if (emailRef.current == null || passwordRef.current == null) {
           addToast({ status: 500, message: "Form not yet hydrated" });
           return;
         }

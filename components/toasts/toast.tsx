@@ -6,6 +6,7 @@ type ToastPropType = {
 const statusCodes: { [key: number]: string } = {
   200: "success",
   400: "warning",
+  403: "warning",
   401: "warning",
   500: "warning",
 };

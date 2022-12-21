@@ -5,75 +5,29 @@ import QRCode from "../components/QRCode";
 import { collection, getDocs } from "firebase/firestore";
 import Link from "next/link";
 import { GetServerSideProps } from "next";
+import { CarouselPropsType, QRCodePropsType } from "../types/indexPropsTypes";
 
-type IndexProps = {
-  query: string[]
-}
-
-export default function IndexPage(props: IndexProps) {
+export default function IndexPage(props: {
+  carousel: CarouselPropsType;
+  qRCode: QRCodePropsType;
+}) {
   const { user, addToast } = useAppContext();
-
-  function signOutHandler() {
-    auth
-      .signOut()
-      .then(() => {
-        console.log("SIGNED OUT");
-        addToast({ status: 200, message: "Successfully signed out" });
-      })
-      .catch((error) => {
-        addToast({
-          status: 500,
-          message: `Error ${error.code}: ${error.message}`,
-        });
-      });
-  }
-
-  let dbList;
-  if(props.query == null) {
-    dbList = null;
-  } else {
-    dbList = props.query.map((name) => {
-      return <li key={name}>{name}</li>;
-    });
-  }
 
   return (
     <div className="bg-light">
-      <Carousel />
-      <QRCode />
-
-      <h1>Firestore Stuff</h1>
-      <ul>{dbList}</ul>
-
-      <hr />
-
-      <h1>Auth Stuff</h1>
-      <Link href="/signIn">
-        <p>Sign In</p>
-      </Link>
-      <Link href="/signUp">
-        <p>Sign Up</p>
-      </Link>
-      <p>Signed in: {Boolean(user).toString()}</p>
-      {user && (
-        <>
-          <p>Logged in as: {user.email}</p>
-        </>
-      )}
-      <button className="btn btn-primary" onClick={signOutHandler}>
-        Sign Out
-      </button>
+      <Carousel data={props.carousel} />
+      <QRCode data={props.qRCode} />
     </div>
   );
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const query = await getDocs(collection(db, "test"));
-  const result: string[] = query.docs.map((doc) => {
-    const name: string = doc.data().Name;
-    return name;
-  });
+  const query = await getDocs(collection(db, "content"));
 
-  const props: IndexProps = { query: result };
+  const props: IndexProps = {};
+  for (const doc of query.docs) {
+    props[doc.id] = doc.data();
+  }
+
   return { props };
 };

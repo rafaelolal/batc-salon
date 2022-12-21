@@ -1,6 +1,7 @@
 import Image from "next/future/image";
+import { QRCodePropsType } from "../types/indexPropsTypes";
 
-export default function QRCode() {
+export default function QRCode(props: { data: QRCodePropsType }) {
   return (
     <div className="mt-5 bg-primary d-flex p-4" style={{ minHeight: "40vh" }}>
       <div className="col-11 col-md-7 mx-auto my-auto">
@@ -18,17 +19,9 @@ export default function QRCode() {
               />
             </div>
             <div className="col my-auto">
-              <h1 className="text-secondary mb-0">
-                Book an Appointment Today!
-              </h1>
-              <small className="fs-5">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              </small>
-              <p className="text-secondary fs-4 mt-3">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus
-                eveniet maiores laboriosam, dicta in perspiciatis, non, et
-                expedita nihil dolor neque similique!
-              </p>
+              <h1 className="text-secondary mb-0">{props.data.title}</h1>
+              <small className="fs-5">{props.data.subTitle}</small>
+              <p className="text-secondary fs-4 mt-3">{props.data.body}</p>
             </div>
           </div>
         </div>

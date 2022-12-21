@@ -7,6 +7,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { GetServerSideProps } from "next";
 import { CarouselPropsType, QRCodePropsType } from "../types/indexPropsTypes";
 import { db } from "../firebaseConfig";
+import Testimonials from "../components/testimonials";
 
 type IndexProps = {
   carousel: CarouselPropsType;
@@ -30,8 +31,8 @@ export default function IndexPage(props: IndexProps) {
 
     <ViewGalleryButton />
 
-    <div id="index-bottom" className="bottom-animated-shown bg-light overflow-auto">
-      <h1>More stuff</h1>
+    <div id="index-bottom" className="bottom-animated-shown bg-light overflow-hidden">
+      <Testimonials />
       <Footer />
     </div>
   </>

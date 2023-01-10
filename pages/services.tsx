@@ -20,31 +20,31 @@ export default function ServicesPage(props: ServicesProps) {
     <div className="bg-primary">
       <h2>{props.section1.title}</h2>
       <p>{props.section1.body}</p>
-      <Image width="500px" height="200px" src={props.section1.imgAddr}/>
+      <Image alt={props.section1.title} width="500px" height="200px" src={props.section1.imgAddr}/>
     </div>
 
     <h2>{props.section2.title}</h2>
     <div className="bg-primary">
       <p>{props.section2.body}</p>
-      <Image width="500px" height="200px" src={props.section2.imgAddr}/>
+      <Image alt={props.section1.title} width="500px" height="200px" src={props.section2.imgAddr}/>
       <h2>We also offer</h2>
     </div>
 
     <div className="row">
       <div className="col">
-        <Image width="500px" height="200px" src={props.offering1.imgAddr}/><br/>
+        <Image alt={props.offering1.title} width="500px" height="200px" src={props.offering1.imgAddr}/><br/>
         <b>{props.offering1.title}</b>
         <p>{props.offering1.body}</p>
       </div>
 
       <div className="col">
-        <Image width="500px" height="200px" src={props.offering2.imgAddr}/><br/>
+        <Image alt={props.offering2.title} width="500px" height="200px" src={props.offering2.imgAddr}/><br/>
         <b>{props.offering2.title}</b>
         <p>{props.offering2.body}</p>
       </div>
 
       <div className="col">
-        <Image width="500px" height="200px" src={props.offering3.imgAddr}/><br/>
+        <Image alt={props.offering3.title} width="500px" height="200px" src={props.offering3.imgAddr}/><br/>
         <b>{props.offering3.title}</b>
         <p>{props.offering3.body}</p>
       </div>

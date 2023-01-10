@@ -2,6 +2,7 @@ import Carousel from "../components/carousel";
 import QRCode from "../components/QRCode";
 import Stylists from "../components/stylists";
 import ViewGalleryButton from "../components/viewGalleryButton";
+import Gallery from "../components/gallery";
 import Footer from "../components/layout/footer";
 import { collection, getDocs } from "firebase/firestore";
 import { GetServerSideProps } from "next";
@@ -17,10 +18,7 @@ type IndexProps = {
 export default function IndexPage(props: IndexProps) {
   return (<>
     <div className="index-background">
-      <h1>This goes in the background area</h1>
-      <p>This is a placeholder</p>
-      <p>Note that it wont scroll</p>
-      <p>Press Esc to get back to the main page</p>
+      <Gallery/>
     </div>
 
     <div id="index-top" className="top-animated-shown bg-light overflow-auto">

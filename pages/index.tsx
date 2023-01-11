@@ -5,20 +5,22 @@ import ViewGalleryButton from "../components/viewGalleryButton";
 import Gallery from "../components/gallery";
 import Footer from "../components/layout/footer";
 import { collection, getDocs } from "firebase/firestore";
-import { GetServerSideProps } from "next";
+import { getDownloadURL, listAll, ref } from "firebase/storage";
+import { GetStaticProps } from "next";
 import { CarouselPropsType, QRCodePropsType } from "../types/indexPropsTypes";
-import { db } from "../firebaseConfig";
+import { db, storage } from "../firebaseConfig";
 import Testimonials from "../components/testimonials";
 
 type IndexProps = {
   carousel: CarouselPropsType;
   qRCode: QRCodePropsType;
+  galleryUrls: string[];
 }
 
 export default function IndexPage(props: IndexProps) {
   return (<>
     <div className="index-background">
-      <Gallery/>
+      <Gallery imgUrls={props.galleryUrls} />
     </div>
 
     <div id="index-top" className="top-animated-shown bg-light overflow-auto">
@@ -37,7 +39,7 @@ export default function IndexPage(props: IndexProps) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const query = await getDocs(collection(db, "content"));
 
   const props_untyped: { [key: string]: CarouselPropsType | QRCodePropsType } = {};
@@ -45,10 +47,20 @@ export const getServerSideProps: GetServerSideProps = async () => {
     props_untyped[doc.id] = doc.data() as CarouselPropsType | QRCodePropsType;
   }
 
+  const galleryImgsRef = ref(storage, "gallery-imgs");
+  const imgs = await listAll(galleryImgsRef);
+  const img_urls: string[] = [];
+  for(const img of imgs.items) {
+    const url = await getDownloadURL(img);
+    console.log(url);
+    img_urls.push(url);
+  }
+
   const props: IndexProps = {
     carousel: props_untyped["carousel"] as CarouselPropsType,
-    qRCode: props_untyped["qRCode"] as QRCodePropsType
+    qRCode: props_untyped["qRCode"] as QRCodePropsType,
+    galleryUrls: img_urls
   };
 
-  return { props };
+  return { props, revalidate: 600 }; // Revalidate every 10 min (600 sec)
 };

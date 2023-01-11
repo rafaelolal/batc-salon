@@ -6,7 +6,7 @@ import Gallery from "../components/gallery";
 import Footer from "../components/layout/footer";
 import { collection, getDocs } from "firebase/firestore";
 import { getDownloadURL, listAll, ref } from "firebase/storage";
-import { GetServerSideProps } from "next";
+import { GetStaticProps } from "next";
 import { CarouselPropsType, QRCodePropsType } from "../types/indexPropsTypes";
 import { db, storage } from "../firebaseConfig";
 import Testimonials from "../components/testimonials";
@@ -39,7 +39,7 @@ export default function IndexPage(props: IndexProps) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const query = await getDocs(collection(db, "content"));
 
   const props_untyped: { [key: string]: CarouselPropsType | QRCodePropsType } = {};
@@ -62,5 +62,5 @@ export const getServerSideProps: GetServerSideProps = async () => {
     galleryUrls: img_urls
   };
 
-  return { props };
+  return { props, revalidate: 600 }; // Revalidate every 10 min (600 sec)
 };

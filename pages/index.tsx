@@ -49,10 +49,15 @@ export const getStaticProps: GetStaticProps = async () => {
 
   const galleryImgsRef = ref(storage, "gallery-imgs");
   const imgs = await listAll(galleryImgsRef);
-  const img_urls: string[] = [];
+
+  const promises: Promise<string>[] = [];
   for(const img of imgs.items) {
-    const url = await getDownloadURL(img);
-    console.log(url);
+    promises.push(getDownloadURL(img));
+  }
+
+  const img_urls: string[] = [];
+  for(const promise of promises) {
+    const url = await promise;
     img_urls.push(url);
   }
 

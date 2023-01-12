@@ -1,9 +1,14 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import FacebookIcon from "../icons/facebook";
 import InstagramIcon from "../icons/instagram";
 import PinterestIcon from "../icons/pinterest";
 
 export default function Navbar() {
+  const router = useRouter();
+  const activePage = router.pathname;
+  console.log({ activePage });
+
   return (
     <nav className="navbar navbar-expand-lg bg-light">
       <div className="container">
@@ -24,14 +29,22 @@ export default function Navbar() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link activeLink" aria-current="page" href="#">
-                HOME
-              </a>
+              <Link href="/">
+                <a className={`nav-link ${activePage == "/" && "activeLink"}`}>
+                  HOME
+                </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
-                SERVICES
-              </a>
+              <Link href="/services">
+                <a
+                  className={`nav-link ${
+                    activePage == "/services" && "activeLink"
+                  }`}
+                >
+                  SERVICES
+                </a>
+              </Link>
             </li>
           </ul>
           <Link href="https://www.pinterest.com/">

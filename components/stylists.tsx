@@ -7,16 +7,18 @@ import { useAppContext } from "../context/state";
 
 export default function Stylists() {
   const addToast = useAppContext().addToast;
-  const [ stylists, setStylists ] = useState<StylistProps[]>([]);
+  const [stylists, setStylists] = useState<StylistProps[]>([]);
 
   useEffect(() => {
     getDocs(collection(db, "stylists")).then(
       (result) => {
         const docs = result.docs;
 
-        setStylists(docs.map((x) => {
-          return x.data() as StylistProps;
-        }));
+        setStylists(
+          docs.map((x) => {
+            return x.data() as StylistProps;
+          })
+        );
       },
       (error) => {
         addToast({ status: 500, message: error });
@@ -31,7 +33,7 @@ export default function Stylists() {
 
     {stylists.map((x) => {
       return <span key={i++}>
-        <Stylist name={x.name} img={x.img}/>
+        <Stylist name={x.name} img={x.img} />
       </span>;
     })}
   </>;

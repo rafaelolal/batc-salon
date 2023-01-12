@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import FacebookIcon from "../icons/facebook";
@@ -12,9 +13,17 @@ export default function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg bg-light">
       <div className="container">
-        <a className="navbar-brand" href="#">
-          Navbar
-        </a>
+        <Link href="/">
+          <img
+            src="/images/navbar_logo.png"
+            className="position-absolute top-0"
+            style={{ zIndex: 100 }}
+            width="60"
+            height="72"
+            placeholder="blur"
+            blurDataURL="https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg"
+          />
+        </Link>
         <button
           className="navbar-toggler"
           type="button"

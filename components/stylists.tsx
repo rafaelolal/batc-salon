@@ -28,17 +28,13 @@ export default function Stylists() {
 
   let i = 0;
 
-  return (
-    <>
-      <h1>Meet the Stylists!</h1>
+  return <>
+    <h1>Meet the Stylists!</h1>
 
-      {stylists.map((x) => {
-        return (
-          <span key={i++}>
-            <Stylist name={x.name} img={x.img} />
-          </span>
-        );
-      })}
-    </>
-  );
+    {stylists.map((x) => {
+      return <span key={i++}>
+        <Stylist name={x.name} img={x.img} />
+      </span>;
+    })}
+  </>;
 }

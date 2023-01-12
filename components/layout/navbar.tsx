@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import FacebookIcon from "../icons/facebook";
@@ -25,7 +24,7 @@ export default function Navbar() {
           />
         </Link>
         <button
-          className="navbar-toggler"
+          className="navbar-toggler ms-auto mb-3"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarSupportedContent"

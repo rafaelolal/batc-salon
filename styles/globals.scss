@@ -47,6 +47,7 @@ $navbar-light-hover-color: $secondary;
 
 .stylistImg {
   object-fit: cover;
+  border-radius: 0;
 }
 .activeLink {
   border-bottom: solid 2px $primary;

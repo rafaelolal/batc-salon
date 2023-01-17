@@ -13,10 +13,12 @@ export default function Navbar() {
     <nav className="navbar navbar-expand-lg bg-light">
       <div className="container">
         <Link href="/">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/images/navbar_logo.png"
             className="position-absolute top-0"
             style={{ zIndex: 100 }}
+            alt="Beauty and the Chic Logo"
             width="60"
             height="72"
           />

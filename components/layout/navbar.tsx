@@ -12,11 +12,19 @@ export default function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg bg-light">
       <div className="container">
-        <a className="navbar-brand" href="#">
-          Navbar
-        </a>
+        <Link href="/">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/navbar_logo.png"
+            className="position-absolute top-0"
+            style={{ zIndex: 100 }}
+            alt="Beauty and the Chic Logo"
+            width="60"
+            height="72"
+          />
+        </Link>
         <button
-          className="navbar-toggler"
+          className="navbar-toggler ms-auto mb-3"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarSupportedContent"
@@ -26,7 +34,11 @@ export default function Navbar() {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+        <div
+          className="collapse navbar-collapse"
+          id="navbarSupportedContent"
+          style={{ paddingLeft: 120 }}
+        >
           <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
             <li className="nav-item">
               <Link href="/">

@@ -5,10 +5,9 @@ import ViewGalleryButton from "../components/viewGalleryButton";
 import Gallery from "../components/gallery";
 import Footer from "../components/layout/footer";
 import { collection, getDocs } from "firebase/firestore";
-import { getDownloadURL, listAll, ref } from "firebase/storage";
 import { GetStaticProps } from "next";
 import { CarouselPropsType, QRCodePropsType } from "../types/indexPropsTypes";
-import { db, storage } from "../firebaseConfig";
+import { db } from "../firebaseConfig";
 import Testimonials from "../components/testimonials";
 
 type IndexProps = {

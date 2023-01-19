@@ -13,7 +13,6 @@ import Testimonials from "../components/testimonials";
 type IndexProps = {
   carousel: CarouselPropsType;
   qRCode: QRCodePropsType;
-  galleryUrls: string[];
 }
 
 export default function IndexPage(props: IndexProps) {

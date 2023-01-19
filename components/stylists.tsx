@@ -30,7 +30,7 @@ export default function Stylists() {
 
   return (
     <>
-      <h1 className="text-center mt-3">Meet the Stylists!</h1>
+      <h1 className="text-center mt-3 fs-3">Meet the Stylists!</h1>
       <div className="d-flex justify-content-center">
         {stylists.map((x) => {
           return (

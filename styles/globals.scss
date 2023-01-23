@@ -8,7 +8,7 @@ $navbar-light-hover-color: $secondary;
 
 @import "./node_modules/bootstrap/scss/bootstrap.scss";
 
-.index-background {
+#index-background {
   position: fixed;
   z-index: -1;
 }

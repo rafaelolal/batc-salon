@@ -11,6 +11,12 @@
         "next/core-web-vitals"
     ],
     "overrides": [
+        {
+            "files": ["*"],
+            "rules": {
+                "@typescript-eslint/ban-ts-comment": "off"
+            }
+        }
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {

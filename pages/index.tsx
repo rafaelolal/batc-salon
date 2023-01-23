@@ -17,7 +17,7 @@ type IndexProps = {
 
 export default function IndexPage(props: IndexProps) {
   return (<>
-    <div className="index-background">
+    <div id="index-background">
       <Gallery />
     </div>
 

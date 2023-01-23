@@ -60,7 +60,7 @@ export default function ViewGalleryButton() {
           }
 
           // @ts-ignore (instant is a valid value for behavior but TS doesn't see it that way for some reason)
-          window.scrollTo({top: 0, left: 0, behavior: "instant"});
+          window.scrollTo({ top: 0, left: 0, behavior: "instant" });
           setReadyToShowButton(true);
         }, animation_time);
       }

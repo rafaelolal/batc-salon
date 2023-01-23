@@ -2,6 +2,8 @@ import { useCallback, useEffect, useState } from "react";
 
 export default function ViewGalleryButton() {
   const [ currentlyViewing, setCurrentlyViewing ] = useState(false);
+  const [ readyToShowButton, setReadyToShowButton ] = useState(true);
+  const [ padding, setPadding ] = useState("200px");
 
   const toggle = useCallback(() => {
     let new_class: string;
@@ -30,6 +32,8 @@ export default function ViewGalleryButton() {
     const index_top = document.getElementById("index-top");
     const index_bottom = document.getElementById("index-bottom");
     if(index_top != null && index_bottom != null) { // Should always be true, but needed to satisfy TS
+      setReadyToShowButton(false);
+
       if(currentlyViewing) {
         index_top.hidden = false;
         index_bottom.hidden = false;
@@ -49,14 +53,19 @@ export default function ViewGalleryButton() {
           if(!currentlyViewing) {
             index_top.hidden = true;
             index_bottom.hidden = true;
+            setPadding("25px");
+          }
+          else {
+            setPadding("200px");
           }
 
           // @ts-ignore (instant is a valid value for behavior but TS doesn't see it that way for some reason)
           window.scrollTo({top: 0, left: 0, behavior: "instant"});
+          setReadyToShowButton(true);
         }, animation_time);
       }
     }
-  }, [currentlyViewing, setCurrentlyViewing]);
+  }, [currentlyViewing, setCurrentlyViewing, setReadyToShowButton, setPadding]);
 
   const escPress = useCallback((event: KeyboardEvent) => {
     if(event.key === "Escape" && currentlyViewing) {
@@ -68,9 +77,10 @@ export default function ViewGalleryButton() {
     document.addEventListener("keydown", escPress);
   }, [escPress]);
 
-  return <div style={{ padding:"200px" }}>
-    {!currentlyViewing && <button className="mx-auto bg-light p-4 text-center" style={{ display:"block" }} onClick={toggle}>
-      <h2>View Gallery</h2>
+  return <div style={{ padding }}>
+    {readyToShowButton && <button className="mx-auto bg-light p-4 text-center" style={{ display:"block" }} onClick={toggle}>
+      {!currentlyViewing && <h2>View Gallery</h2>}
+      {currentlyViewing && <h2>Return</h2>}
     </button>}
   </div>;
 }

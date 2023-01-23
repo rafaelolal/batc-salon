@@ -10,7 +10,7 @@ export default function Navbar() {
   console.log({ activePage });
 
   return (
-    <nav className="navbar navbar-expand-lg bg-light">
+    <nav className="navbar fixed-top navbar-expand-lg bg-light">
       <div className="container">
         <Link href="/">
           {/* eslint-disable-next-line @next/next/no-img-element */}

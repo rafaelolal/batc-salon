@@ -15,19 +15,19 @@ type ServicesProps = {
 
 export default function ServicesPage(props: ServicesProps) {
   return <>
-    <h1>Services</h1>
+    <h1 className = "services">Services</h1>
 
     <div className="bg-primary">
-      <h2>{props.section1.title}</h2>
+      <h2 className="text-center text-secondary">{props.section1.title}</h2>
       <p>{props.section1.body}</p>
       <Image alt={props.section1.title} width="500px" height="200px" src={props.section1.imgAddr}/>
     </div>
 
-    <h2>{props.section2.title}</h2>
+    <h2 className="text-center">{props.section2.title}</h2>
     <div className="bg-primary">
       <p>{props.section2.body}</p>
       <Image alt={props.section1.title} width="500px" height="200px" src={props.section2.imgAddr}/>
-      <h2>We also offer</h2>
+      <h2 className="text-center text-secondary">We also offer</h2>
     </div>
 
     <div className="row">

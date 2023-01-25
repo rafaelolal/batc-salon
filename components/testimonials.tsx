@@ -32,7 +32,7 @@ export default function Testimonials() {
   }
 
   return <>
-    <h1 className="text-center">Testimonials</h1>
+    <h1 className="text-lg-center" >Testimonials</h1>
     <div className="row justify-content-around">
       {testimonial_components}
     </div>

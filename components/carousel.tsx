@@ -13,7 +13,7 @@ export default function Carousel(props: { data: CarouselPropsType }) {
           <div key={i} className={`carousel-item ${i == 1 ? "active" : ""}`}>
             <div
               className="card text-bg-dark rounded-0"
-              style={{ height: "50vh" }}
+              style={{ height: "60vh" }}
             >
               <Image
                 className="card-img"

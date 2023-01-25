@@ -29,8 +29,8 @@ export default function Stylists() {
   let i = 0;
 
   return (
-    <>
-      <h1 className="text-center mt-3 fs-3">Meet the Stylists!</h1>
+    <div className="py-5">
+      <h1 className="text-center my-3 fs-3 text-primary">Meet the Stylists!</h1>
       <div className="d-flex justify-content-center">
         {stylists.map((x) => {
           return (
@@ -40,6 +40,6 @@ export default function Stylists() {
           );
         })}
       </div>
-    </>
+    </div>
   );
 }

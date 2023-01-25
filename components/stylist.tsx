@@ -12,8 +12,8 @@ export default function Stylist(props: StylistProps) {
       style={{
         margin: 10,
         display: "inline-block",
-        height: "300px",
-        width: "180px",
+        height: "370px",
+        width: "250px",
         border: 0,
         borderRadius: 0,
       }}
@@ -21,17 +21,15 @@ export default function Stylist(props: StylistProps) {
       <Image
         className="stylistImg"
         alt={`A picture of stylist ${props.name}`}
-        width="180"
-        height="300"
+        width="250"
+        height="370"
         src={`/images/stylists/${props.img}`}
       />
       <div className="card-img-overlay d-flex m-2 rounded-0 border border-2">
         <p
-          className="text-center mx-auto mt-auto py-1 shadow-lg fs-6"
+          className="text-center bg-light mx-auto mt-auto py-1 shadow-lg fs-6 text-primary"
           style={{
-            backgroundColor: "#F6F2F1",
             width: "80px",
-            color: "#36744A",
           }}
         >
           {props.name}

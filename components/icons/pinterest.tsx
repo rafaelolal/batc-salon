@@ -1,4 +1,4 @@
-export default function PinterestIcon() {
+export default function PinterestIcon(props: { fill: string }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11,7 +11,7 @@ export default function PinterestIcon() {
       className="me-2"
     >
       <g
-        fill="#286b3e"
+        fill={props.fill}
         fill-rule="nonzero"
         stroke="none"
         strokeWidth="1"

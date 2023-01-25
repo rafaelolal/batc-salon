@@ -42,14 +42,20 @@ export default function ViewGalleryButton() {
   }, [escPress]);
 
   return (
-    <div style={{ padding: "200px" }}>
+    <div
+      style={{
+        boxShadow:
+          "inset 0 40px 50px -30px  rgba(0,0,0,1), inset 0 -40px 50px -30px rgba(0,0,0,1) ",
+        padding: "240px",
+      }}
+    >
       {!currentlyViewing && (
         <button
-          className="mx-auto bg-light p-4 text-center"
+          className="mx-auto bg-light px-4 py-3 text-center border-0 shadow-lg"
           style={{ display: "block" }}
           onClick={toggle}
         >
-          <h2>View Gallery</h2>
+          <h4 className="text-primary">View Gallery</h4>
         </button>
       )}
     </div>

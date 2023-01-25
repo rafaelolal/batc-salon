@@ -4,6 +4,7 @@
 // Write global styles above the imports!
 $navbar-light-color: $primary;
 $navbar-light-hover-color: $secondary;
+$enable-negative-margins: true;
 // $navbar-light-active-color: ?
 
 @import "./node_modules/bootstrap/scss/bootstrap.scss";

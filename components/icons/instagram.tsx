@@ -11,10 +11,10 @@ export default function InstagramIcon() {
     >
       <g
         fill="#286b3e"
-        fill-rule="nonzero"
+        fillRule="nonzero"
         stroke="none"
         strokeWidth="1"
-        stroke-linecap="butt"
+        strokeLinecap="butt"
         strokeLinejoin="miter"
         strokeMiterlimit="10"
         strokeDasharray=""

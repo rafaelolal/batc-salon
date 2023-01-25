@@ -5,10 +5,9 @@ import ViewGalleryButton from "../components/viewGalleryButton";
 import Gallery from "../components/gallery";
 import Footer from "../components/layout/footer";
 import { collection, getDocs } from "firebase/firestore";
-import { getDownloadURL, listAll, ref } from "firebase/storage";
 import { GetStaticProps } from "next";
 import { CarouselPropsType, QRCodePropsType } from "../types/indexPropsTypes";
-import { db, storage } from "../firebaseConfig";
+import { db } from "../firebaseConfig";
 import Testimonials from "../components/testimonials";
 
 type IndexProps = {
@@ -18,11 +17,10 @@ type IndexProps = {
 };
 
 export default function IndexPage(props: IndexProps) {
-  return (
-    <>
-      <div className="index-background">
-        <Gallery imgUrls={props.galleryUrls} />
-      </div>
+  return (<>
+    <div className="index-background">
+      <Gallery />
+    </div>
 
       <div id="index-top" className="top-animated-shown bg-light overflow-auto">
         <Carousel data={props.carousel} />
@@ -52,6 +50,7 @@ export const getStaticProps: GetStaticProps = async () => {
     props_untyped[doc.id] = doc.data() as CarouselPropsType | QRCodePropsType;
   }
 
+<<<<<<< HEAD
   const galleryImgsRef = ref(storage, "gallery-imgs");
   const imgs = await listAll(galleryImgsRef);
   const img_urls: string[] = [];
@@ -65,6 +64,11 @@ export const getStaticProps: GetStaticProps = async () => {
     carousel: props_untyped["carousel"] as CarouselPropsType,
     qRCode: props_untyped["qRCode"] as QRCodePropsType,
     galleryUrls: img_urls,
+=======
+  const props: IndexProps = {
+    carousel: props_untyped["carousel"] as CarouselPropsType,
+    qRCode: props_untyped["qRCode"] as QRCodePropsType
+>>>>>>> b2fd7d9534f492ba74aee7a0c324b0e29e17c6ed
   };
 
   return { props, revalidate: 600 }; // Revalidate every 10 min (600 sec)

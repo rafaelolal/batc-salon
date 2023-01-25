@@ -15,34 +15,39 @@ type IndexProps = {
   carousel: CarouselPropsType;
   qRCode: QRCodePropsType;
   galleryUrls: string[];
-}
+};
 
 export default function IndexPage(props: IndexProps) {
-  return (<>
-    <div className="index-background">
-      <Gallery imgUrls={props.galleryUrls} />
-    </div>
+  return (
+    <>
+      <div className="index-background">
+        <Gallery imgUrls={props.galleryUrls} />
+      </div>
 
-    <div id="index-top" className="top-animated-shown bg-light overflow-auto">
-      <Carousel data={props.carousel} />
-      <QRCode data={props.qRCode} />
-      <Stylists/>
-    </div>
+      <div id="index-top" className="top-animated-shown bg-light overflow-auto">
+        <Carousel data={props.carousel} />
+        <QRCode data={props.qRCode} />
+        <Stylists />
+      </div>
 
-    <ViewGalleryButton />
+      <ViewGalleryButton />
 
-    <div id="index-bottom" className="bottom-animated-shown bg-light overflow-hidden">
-      <Testimonials />
-      <Footer />
-    </div>
-  </>
+      <div
+        id="index-bottom"
+        className="bottom-animated-shown bg-light overflow-hidden"
+      >
+        <Testimonials />
+        <Footer />
+      </div>
+    </>
   );
 }
 
 export const getStaticProps: GetStaticProps = async () => {
   const query = await getDocs(collection(db, "content"));
 
-  const props_untyped: { [key: string]: CarouselPropsType | QRCodePropsType } = {};
+  const props_untyped: { [key: string]: CarouselPropsType | QRCodePropsType } =
+    {};
   for (const doc of query.docs) {
     props_untyped[doc.id] = doc.data() as CarouselPropsType | QRCodePropsType;
   }
@@ -50,7 +55,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const galleryImgsRef = ref(storage, "gallery-imgs");
   const imgs = await listAll(galleryImgsRef);
   const img_urls: string[] = [];
-  for(const img of imgs.items) {
+  for (const img of imgs.items) {
     const url = await getDownloadURL(img);
     console.log(url);
     img_urls.push(url);
@@ -59,7 +64,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const props: IndexProps = {
     carousel: props_untyped["carousel"] as CarouselPropsType,
     qRCode: props_untyped["qRCode"] as QRCodePropsType,
-    galleryUrls: img_urls
+    galleryUrls: img_urls,
   };
 
   return { props, revalidate: 600 }; // Revalidate every 10 min (600 sec)

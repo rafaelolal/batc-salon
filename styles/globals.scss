@@ -1,5 +1,6 @@
 // Any new files you write under ./scss, import them above everything
 @import "./colors";
+@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
 
 // Write global styles above the imports!
 $navbar-light-color: $primary;
@@ -47,4 +48,12 @@ $navbar-light-hover-color: $secondary;
 
 .activeLink {
   border-bottom: solid 2px $primary;
+}
+
+.col-3{
+  font-family: 'Lora', serif;
+}
+
+h1{
+  font-family: 'Lora', serif;
 }

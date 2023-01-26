@@ -16,7 +16,7 @@ type IndexProps = {
 }
 
 export default function IndexPage(props: IndexProps) {
-  return (<>
+  return <>
     <div id="index-background">
       <Gallery />
     </div>
@@ -24,17 +24,22 @@ export default function IndexPage(props: IndexProps) {
     <div id="index-top" className="top-animated-shown bg-light overflow-auto">
       <Carousel data={props.carousel} />
       <QRCode data={props.qRCode} />
-      <Stylists/>
+
+      <div className="">
+        <Stylists />
+      </div>
     </div>
 
     <ViewGalleryButton />
 
-    <div id="index-bottom" className="bottom-animated-shown bg-light overflow-hidden">
+    <div
+      id="index-bottom"
+      className="bottom-animated-shown bg-light overflow-hidden"
+    >
       <Testimonials />
       <Footer />
     </div>
-  </>
-  );
+  </>;
 }
 
 export const getStaticProps: GetStaticProps = async () => {

@@ -1,4 +1,4 @@
-export default function InstagramIcon() {
+export default function InstagramIcon(props: { fill: string }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10,7 +10,7 @@ export default function InstagramIcon() {
       style={{ fill: "#000000" }}
     >
       <g
-        fill="#286b3e"
+        fill={props.fill}
         fillRule="nonzero"
         stroke="none"
         strokeWidth="1"

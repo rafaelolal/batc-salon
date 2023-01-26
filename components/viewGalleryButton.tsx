@@ -1,9 +1,15 @@
 import { useCallback, useEffect, useState } from "react";
 
+const highPadding = "240px";
+const lowPadding = "25px";
+const yesBoxShadow = "inset 0 40px 50px -30px  rgba(0,0,0,1), inset 0 -40px 50px -30px rgba(0,0,0,1) ";
+const noBoxShadow = "none";
+
 export default function ViewGalleryButton() {
   const [ currentlyViewing, setCurrentlyViewing ] = useState(false);
   const [ readyToShowButton, setReadyToShowButton ] = useState(true);
-  const [ padding, setPadding ] = useState("200px");
+  const [ padding, setPadding ] = useState(highPadding);
+  const [ boxShadow, setBoxShadow ] = useState(yesBoxShadow);
 
   const toggle = useCallback(() => {
     let new_class: string;
@@ -19,8 +25,7 @@ export default function ViewGalleryButton() {
       new_position = "fixed";
       animation_time = 0;
       setCurrentlyViewing(false);
-    }
-    else {
+    } else {
       old_class = "-animated-shown";
       new_class = "-animated-hidden";
       new_z = 0;
@@ -38,6 +43,9 @@ export default function ViewGalleryButton() {
         index_top.hidden = false;
         index_bottom.hidden = false;
       }
+      else {
+        setBoxShadow(noBoxShadow);
+      }
 
       setTimeout(() => {
         index_top.classList.replace(`top${old_class}`, `top${new_class}`);
@@ -53,10 +61,11 @@ export default function ViewGalleryButton() {
           if(!currentlyViewing) {
             index_top.hidden = true;
             index_bottom.hidden = true;
-            setPadding("25px");
+            setPadding(lowPadding);
           }
           else {
-            setPadding("200px");
+            setPadding(highPadding);
+            setBoxShadow(yesBoxShadow);
           }
 
           // @ts-ignore (instant is a valid value for behavior but TS doesn't see it that way for some reason)
@@ -67,20 +76,36 @@ export default function ViewGalleryButton() {
     }
   }, [currentlyViewing, setCurrentlyViewing, setReadyToShowButton, setPadding]);
 
-  const escPress = useCallback((event: KeyboardEvent) => {
-    if(event.key === "Escape" && currentlyViewing) {
-      toggle();
-    }
-  }, [toggle, currentlyViewing]);
+  const escPress = useCallback(
+    (event: KeyboardEvent) => {
+      if (event.key === "Escape" && currentlyViewing) {
+        toggle();
+      }
+    },
+    [toggle, currentlyViewing]
+  );
 
   useEffect(() => {
     document.addEventListener("keydown", escPress);
   }, [escPress]);
 
-  return <div style={{ padding }}>
-    {readyToShowButton && <button className="mx-auto bg-light p-4 text-center" style={{ display:"block" }} onClick={toggle}>
-      {!currentlyViewing && <h2>View Gallery</h2>}
-      {currentlyViewing && <h2>Return</h2>}
-    </button>}
-  </div>;
+  return <>
+    <div
+      style={{
+        boxShadow,
+        padding
+      }}
+    >
+      {readyToShowButton && (
+        <button
+          className="mx-auto bg-light px-4 py-3 text-center border-0 shadow-lg"
+          style={{ display: "block" }}
+          onClick={toggle}
+        >
+          {!currentlyViewing && <h4 className="text-primary">View Gallery</h4>}
+          {currentlyViewing && <h4 className="text-primary">Return</h4>}
+        </button>
+      )}
+    </div>
+  </>;
 }

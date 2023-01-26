@@ -28,13 +28,18 @@ export default function Stylists() {
 
   let i = 0;
 
-  return <>
-    <h1>Meet the Stylists!</h1>
-
-    {stylists.map((x) => {
-      return <span key={i++}>
-        <Stylist name={x.name} img={x.img} />
-      </span>;
-    })}
-  </>;
+  return (
+    <div className="py-5">
+      <h1 className="text-center my-3 fs-3 text-primary">Meet the Stylists!</h1>
+      <div className="d-flex justify-content-center">
+        {stylists.map((x) => {
+          return (
+            <span key={i++}>
+              <Stylist name={x.name} img={x.img} />
+            </span>
+          );
+        })}
+      </div>
+    </div>
+  );
 }

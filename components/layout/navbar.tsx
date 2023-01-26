@@ -61,17 +61,17 @@ export default function Navbar() {
           </ul>
           <Link href="https://www.pinterest.com/">
             <a>
-              <PinterestIcon />
+              <PinterestIcon fill="#286b3e" />
             </a>
           </Link>
           <Link href="https://www.facebook.com/">
             <a>
-              <FacebookIcon />
+              <FacebookIcon fill="#286b3e" />
             </a>
           </Link>
           <Link href="https://www.instagram.com/">
             <a>
-              <InstagramIcon />
+              <InstagramIcon fill="#286b3e" />
             </a>
           </Link>
         </div>

@@ -29,7 +29,7 @@ export default function Stylists() {
   let i = 0;
 
   return <>
-    <h1 className="text-center">Meet the Stylists!</h1>
+    <h1 className="text-center font-weight-bold">Meet the Stylists!</h1>
 
     {stylists.map((x) => {
       return <span key={i++}>

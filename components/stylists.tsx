@@ -26,19 +26,13 @@ export default function Stylists() {
     );
   }, [addToast]);
 
-  let i = 0;
-
   return (
-    <div className="py-5">
+    <div className="py-5" style={{ overflow: "hidden" }}>
       <h1 className="text-center my-3 fs-3 text-primary">Meet the Stylists!</h1>
-      <div className="d-flex justify-content-center">
-        {stylists.map((x) => {
-          return (
-            <span key={i++}>
-              <Stylist name={x.name} img={x.img} />
-            </span>
-          );
-        })}
+      <div className="row flex-nowrap" style={{ overflowX: "scroll" }}>
+        {stylists.map((x, i) => (
+          <Stylist key={i} name={x.name} img={x.img} />
+        ))}
       </div>
     </div>
   );

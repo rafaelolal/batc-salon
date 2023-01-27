@@ -1,14 +1,24 @@
-import Image from "next/image";
+import Image from "next/future/image";
 
 const NUM_IMGS = 54;
 
 export default function Gallery() {
   const images: JSX.Element[] = [];
-  for(let i = 0; i < NUM_IMGS; i++) {
-    images.push(<Image className="m-1" key={i} src={`/images/gallery/${i}.jpg`} alt="A previous customer with an amazing haircut" width="250px" height="400px"/>);
+  for (let i = 0; i < NUM_IMGS; i++) {
+    images.push(
+      <div className="col-6 col-sm-4 col-md-3 col-xxl-2 p-1">
+        <Image
+          className=""
+          key={i}
+          src={`/images/gallery/${i}.jpg`}
+          alt="A previous customer with an amazing haircut"
+          width="100"
+          height="400"
+          style={{ objectFit: "cover", width: "100%", height: "100%" }}
+        />
+      </div>
+    );
   }
 
-  return <div className="d-flex justify-content-center flex-wrap">
-    {images}
-  </div>;
+  return <div className="row justify-content-center p-0">{images}</div>;
 }

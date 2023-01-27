@@ -9,7 +9,7 @@ export default function Dashboard(props) {
   const { addToast } = useAppContext();
   const [locked, setLocked] = useState(true);
   const [rick, setRick] = useState(false);
-  const myElements = useRef(new Array());
+  const myElements = useRef([]);
 
   const keyRef = useRef() as MutableRefObject<HTMLInputElement>;
 
@@ -33,7 +33,7 @@ export default function Dashboard(props) {
   }
 
   function eachRecursive(obj, level) {
-    for (var k in obj) {
+    for (const k in obj) {
       if (typeof obj[k] == "object" && obj[k] !== null) {
         if (level == 1) {
           myElements.current.push(<h1 className="mb-1 mt-4">{k}</h1>);
@@ -128,7 +128,7 @@ export async function getServerSideProps() {
   );
 
   for (let i = 0; i < collectionNames.length; i++) {
-    for (let doc of collections[i].docs)
+    for (const doc of collections[i].docs)
       props[collectionNames[i]][doc.id] = doc.data();
   }
 

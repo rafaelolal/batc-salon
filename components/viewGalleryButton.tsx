@@ -1,15 +1,16 @@
 import { useCallback, useEffect, useState } from "react";
 
-const highPadding = "240px";
-const lowPadding = "25px";
-const yesBoxShadow = "inset 0 40px 50px -30px  rgba(0,0,0,1), inset 0 -40px 50px -30px rgba(0,0,0,1) ";
+const highPadding = "240px 0";
+const lowPadding = "25px 0";
+const yesBoxShadow =
+  "inset 0 40px 50px -30px  rgba(0,0,0,1), inset 0 -40px 50px -30px rgba(0,0,0,1) ";
 const noBoxShadow = "none";
 
 export default function ViewGalleryButton() {
-  const [ currentlyViewing, setCurrentlyViewing ] = useState(false);
-  const [ readyToShowButton, setReadyToShowButton ] = useState(true);
-  const [ padding, setPadding ] = useState(highPadding);
-  const [ boxShadow, setBoxShadow ] = useState(yesBoxShadow);
+  const [currentlyViewing, setCurrentlyViewing] = useState(false);
+  const [readyToShowButton, setReadyToShowButton] = useState(true);
+  const [padding, setPadding] = useState(highPadding);
+  const [boxShadow, setBoxShadow] = useState(yesBoxShadow);
 
   const toggle = useCallback(() => {
     let new_class: string;
@@ -18,7 +19,7 @@ export default function ViewGalleryButton() {
     let new_position: string;
     let animation_time: number;
 
-    if(currentlyViewing) {
+    if (currentlyViewing) {
       new_class = "-animated-shown";
       old_class = "-animated-hidden";
       new_z = -1;
@@ -36,34 +37,37 @@ export default function ViewGalleryButton() {
 
     const index_top = document.getElementById("index-top");
     const index_bottom = document.getElementById("index-bottom");
-    if(index_top != null && index_bottom != null) { // Should always be true, but needed to satisfy TS
+    if (index_top != null && index_bottom != null) {
+      // Should always be true, but needed to satisfy TS
       setReadyToShowButton(false);
 
-      if(currentlyViewing) {
+      if (currentlyViewing) {
         index_top.hidden = false;
         index_bottom.hidden = false;
-      }
-      else {
+      } else {
         setBoxShadow(noBoxShadow);
       }
 
       setTimeout(() => {
         index_top.classList.replace(`top${old_class}`, `top${new_class}`);
-        index_bottom.classList.replace(`bottom${old_class}`, `bottom${new_class}`);
+        index_bottom.classList.replace(
+          `bottom${old_class}`,
+          `bottom${new_class}`
+        );
       }, 1); // Short delay needed so that the animation runs after setting hidden to false above
 
       const gallery = document.getElementById("index-background");
-      if(gallery != null && gallery.style != null) { // Should always be true, but needed to satisfy TS
+      if (gallery != null && gallery.style != null) {
+        // Should always be true, but needed to satisfy TS
         setTimeout(() => {
           gallery.style.zIndex = new_z.toString();
           gallery.style.position = new_position;
 
-          if(!currentlyViewing) {
+          if (!currentlyViewing) {
             index_top.hidden = true;
             index_bottom.hidden = true;
             setPadding(lowPadding);
-          }
-          else {
+          } else {
             setPadding(highPadding);
             setBoxShadow(yesBoxShadow);
           }
@@ -89,23 +93,27 @@ export default function ViewGalleryButton() {
     document.addEventListener("keydown", escPress);
   }, [escPress]);
 
-  return <>
-    <div
-      style={{
-        boxShadow,
-        padding
-      }}
-    >
-      {readyToShowButton && (
-        <button
-          className="mx-auto bg-light px-4 py-3 text-center border-0 shadow-lg"
-          style={{ display: "block" }}
-          onClick={toggle}
-        >
-          {!currentlyViewing && <h4 className="text-primary">View Gallery</h4>}
-          {currentlyViewing && <h4 className="text-primary">Return</h4>}
-        </button>
-      )}
-    </div>
-  </>;
+  return (
+    <>
+      <div
+        style={{
+          boxShadow,
+          padding,
+        }}
+      >
+        {readyToShowButton && (
+          <button
+            className="mx-auto bg-light px-4 py-3 text-center border-0 shadow-lg"
+            style={{ display: "block" }}
+            onClick={toggle}
+          >
+            {!currentlyViewing && (
+              <h4 className="text-primary">View Gallery</h4>
+            )}
+            {currentlyViewing && <h4 className="text-primary">Return</h4>}
+          </button>
+        )}
+      </div>
+    </>
+  );
 }

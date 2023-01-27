@@ -4,7 +4,7 @@ import { QRCodePropsType } from "../types/indexPropsTypes";
 export default function QRCode(props: { data: QRCodePropsType }) {
   return (
     <div
-      className="mt-5 d-flex p-4 bg-primary"
+      className="mt-3 d-flex p-4 bg-primary"
       style={{
         minHeight: "45vh",
         boxShadow:

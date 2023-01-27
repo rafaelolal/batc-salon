@@ -25,17 +25,21 @@ export default function ServicesPage(props: ServicesProps) {
           style={{ marginBottom: "20%" }}
         >
           <div className="col">
-            <h1 className="text-light">What out costumers</h1>
-            <h1 className="text-light">
+            <h1 className="text-light text-center text-md-start">
+              What out costumers
+            </h1>
+            <h1 className="text-light  text-center text-md-start">
               are <span className="text-secondary">Loving !</span>
             </h1>
 
-            <p className="text-light pe-5">{props.section1.body}</p>
+            <p className="text-light  text-center text-md-start pe-md-5">
+              {props.section1.body}
+            </p>
           </div>
 
           <div className="col">
             <div
-              className="card rounded-0 border-0"
+              className="card rounded-0 border-0 mx-auto"
               style={{ boxShadow: "0 0 15px rgba(0,0,0, 0.4)", width: "90%" }}
             >
               <Image

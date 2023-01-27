@@ -19,7 +19,7 @@ export default function Carousel(props: { data: CarouselPropsType }) {
                 className="card-img"
                 src={carousel.image}
                 alt="alt 1"
-                style={{ objectFit: "cover"}}
+                style={{ objectFit: "cover" }}
                 fill
                 placeholder="blur"
                 blurDataURL="https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg"

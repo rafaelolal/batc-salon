@@ -36,7 +36,7 @@ export default function Testimonials() {
     );
   }
 
-  return (
+  return <>
     <div className="col-12 my-5">
       <h1 className="text-center text-primary">Testimonials</h1>
       <Image className="d-flex mx-auto mb-4" width="211" height="30" alt="" src="/images/swirly.png"/>
@@ -45,5 +45,5 @@ export default function Testimonials() {
         {testimonial_components}
       </div>
     </div>
-  );
+  </>;
 }

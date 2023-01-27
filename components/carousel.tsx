@@ -11,12 +11,15 @@ export default function Carousel(props: { data: CarouselPropsType }) {
       <div className="carousel-inner">
         {props.data.items.map((carousel, i) => (
           <div key={i} className={`carousel-item ${i == 1 ? "active" : ""}`}>
-            <div className="card rounded-0 mx-auto" style={{ height: "50vh" }}>
+            <div
+              className="card border-0 rounded-0"
+              style={{ height: "60vh" }}
+            >
               <Image
                 className="card-img mx-auto"
                 src={carousel.image}
                 alt="alt 1"
-                style={{ objectFit: "cover", opacity: 1 }}
+                style={{ objectFit: "cover" }}
                 fill
                 placeholder="blur"
                 blurDataURL="https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg"

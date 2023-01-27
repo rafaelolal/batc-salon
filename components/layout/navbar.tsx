@@ -7,7 +7,6 @@ import PinterestIcon from "../icons/pinterest";
 export default function Navbar() {
   const router = useRouter();
   const activePage = router.pathname;
-  console.log({ activePage });
 
   return (
     <nav className="navbar navbar-expand-lg bg-light">

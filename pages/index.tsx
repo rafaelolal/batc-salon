@@ -17,10 +17,11 @@ type IndexProps = {
 };
 
 export default function IndexPage(props: IndexProps) {
-  return (<>
-    <div className="index-background">
-      <Gallery />
-    </div>
+  return (
+    <>
+      <div className="index-background">
+        <Gallery />
+      </div>
 
       <div id="index-top" className="top-animated-shown bg-light overflow-auto">
         <Carousel data={props.carousel} />
@@ -50,25 +51,9 @@ export const getStaticProps: GetStaticProps = async () => {
     props_untyped[doc.id] = doc.data() as CarouselPropsType | QRCodePropsType;
   }
 
-<<<<<<< HEAD
-  const galleryImgsRef = ref(storage, "gallery-imgs");
-  const imgs = await listAll(galleryImgsRef);
-  const img_urls: string[] = [];
-  for (const img of imgs.items) {
-    const url = await getDownloadURL(img);
-    console.log(url);
-    img_urls.push(url);
-  }
-
   const props: IndexProps = {
     carousel: props_untyped["carousel"] as CarouselPropsType,
     qRCode: props_untyped["qRCode"] as QRCodePropsType,
-    galleryUrls: img_urls,
-=======
-  const props: IndexProps = {
-    carousel: props_untyped["carousel"] as CarouselPropsType,
-    qRCode: props_untyped["qRCode"] as QRCodePropsType
->>>>>>> b2fd7d9534f492ba74aee7a0c324b0e29e17c6ed
   };
 
   return { props, revalidate: 600 }; // Revalidate every 10 min (600 sec)

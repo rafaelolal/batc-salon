@@ -8,7 +8,7 @@ export default function Gallery() {
     images.push(
       <div className="col-6 col-sm-4 col-md-3 col-xxl-2 p-1">
         <Image
-          className=""
+          className="expand"
           key={i}
           src={`/images/gallery/${i}.jpg`}
           alt="A previous customer with an amazing haircut"

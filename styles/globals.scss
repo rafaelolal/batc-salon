@@ -81,3 +81,14 @@ h1{
 * {
   font-family: 'Lora', serif;
 }
+
+.expand{
+  transition: transform 0.4s ease-out, box-shadow 0.4s ease-out;
+}
+
+.expand:hover{
+  
+  transform: scale(1.15);
+  box-shadow: 0 0 25px rgba(0,0,0,0.8);
+  z-index: 200;
+}

@@ -8,13 +8,14 @@ const correctKey = "admin";
 export default function Dashboard(props) {
   const { addToast } = useAppContext();
   const [locked, setLocked] = useState(true);
+  const [rick, setRick] = useState(false);
   const myElements = useRef(new Array());
 
   const keyRef = useRef() as MutableRefObject<HTMLInputElement>;
 
   console.log({ props });
 
-  function submitHandler(event) {
+  function signInHandler(event) {
     event.preventDefault();
 
     if (keyRef.current.value != correctKey) {
@@ -26,25 +27,30 @@ export default function Dashboard(props) {
     eachRecursive(props, 1);
   }
 
+  function handleSubmit(event) {
+    event.preventDefault();
+    setRick(true);
+  }
+
   function eachRecursive(obj, level) {
     for (var k in obj) {
       if (typeof obj[k] == "object" && obj[k] !== null) {
         if (level == 1) {
-          myElements.current.push(<h1 className="mb-1">{k}</h1>);
+          myElements.current.push(<h1 className="mb-1 mt-4">{k}</h1>);
         }
         if (level == 2) {
           myElements.current.push(
-            <h2 className={`mb-1 ms-${level + 1}`}>{k}</h2>
+            <h2 className={`mb-1 mt-4 ms-${level + 1}`}>{k}</h2>
           );
         }
         if (level == 3) {
           myElements.current.push(
-            <h3 className={`mb-1 ms-${level + 1}`}>{k}</h3>
+            <h3 className={`mb-1 mt-4 ms-${level + 1}`}>{k}</h3>
           );
         }
         if (level == 4) {
           myElements.current.push(
-            <h4 className={`mb-1 ms-${level + 1}`}>{k}</h4>
+            <h4 className={`mb-1 mt-4 ms-${level + 1}`}>{k}</h4>
           );
         }
         eachRecursive(obj[k], level + 1);
@@ -61,12 +67,26 @@ export default function Dashboard(props) {
     }
   }
 
+  if (rick) {
+    return (
+      <div className="d-flex" style={{ height: "94vh" }}>
+        <video
+          className="mx-auto my-auto"
+          autoPlay
+          style={{ width: "854px", height: "480" }}
+        >
+          <source src="/rick.mp4" type="video/mp4" />
+        </video>
+      </div>
+    );
+  }
+
   if (locked) {
     return (
       <form
         className="d-flex"
         style={{ height: "94vh" }}
-        onSubmit={submitHandler}
+        onSubmit={signInHandler}
       >
         <div className="my-auto mx-auto">
           <div className="input-group">
@@ -90,7 +110,12 @@ export default function Dashboard(props) {
 
   return (
     <>
-      <form className="container mt-5">{myElements.current}</form>
+      <form className="container mt-5" onSubmit={handleSubmit}>
+        {myElements.current}
+        <button className="btn btn-primary my-5" type="submit">
+          Submit
+        </button>
+      </form>
     </>
   );
 }

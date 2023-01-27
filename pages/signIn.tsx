@@ -15,7 +15,7 @@ export default function SignInPage() {
   function submitHandler(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    if(emailRef.current == null || passwordRef.current == null) {
+    if (emailRef.current == null || passwordRef.current == null) {
       addToast({ status: 500, message: "Form not yet hydrated" });
       return;
     }
@@ -25,7 +25,7 @@ export default function SignInPage() {
 
     signInWithEmailAndPassword(auth, email, password)
       .then(() => {
-        if(emailRef.current == null || passwordRef.current == null) {
+        if (emailRef.current == null || passwordRef.current == null) {
           addToast({ status: 500, message: "Form not yet hydrated" });
           return;
         }

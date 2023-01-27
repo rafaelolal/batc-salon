@@ -30,7 +30,7 @@ export default function IndexPage(props: IndexProps) {
       </div>
     </div>
 
-    <ViewGalleryButton />
+      <ViewGalleryButton />
 
     <div
       id="index-bottom"
@@ -45,14 +45,15 @@ export default function IndexPage(props: IndexProps) {
 export const getStaticProps: GetStaticProps = async () => {
   const query = await getDocs(collection(db, "content"));
 
-  const props_untyped: { [key: string]: CarouselPropsType | QRCodePropsType } = {};
+  const props_untyped: { [key: string]: CarouselPropsType | QRCodePropsType } =
+    {};
   for (const doc of query.docs) {
     props_untyped[doc.id] = doc.data() as CarouselPropsType | QRCodePropsType;
   }
 
   const props: IndexProps = {
     carousel: props_untyped["carousel"] as CarouselPropsType,
-    qRCode: props_untyped["qRCode"] as QRCodePropsType
+    qRCode: props_untyped["qRCode"] as QRCodePropsType,
   };
 
   return { props, revalidate: 600 }; // Revalidate every 10 min (600 sec)

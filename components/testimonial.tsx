@@ -10,14 +10,39 @@ export default function Testimonial(props: { testimonial: TestimonialType }) {
   }
 
   return (
-    <div style={{ boxShadow: "0 0 20px -10px #000" }}>
-      <div className="m-2 p-2 rounded bg-light"></div>
-      <h2>{props.testimonial.customer}</h2>
-      <i>{props.testimonial.subtitle}</i>
-      <br />
-      {stars}
-      <p>{props.testimonial.desc}</p>
-      <small>{props.testimonial.date.toDate().toLocaleString()}</small>
+    <div
+      className="rounded p-4 position-relative d-flex flex-column"
+      style={{
+        boxShadow:
+          "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
+        height: "100%",
+      }}
+    >
+      <h5 className="text-center">
+        {props.testimonial.customer}
+        <hr
+          className="mx-auto my-1"
+          style={{
+            width: "50px",
+            height: "2px",
+            borderTop: "3px solid black",
+            opacity: "100%",
+          }}
+        />
+      </h5>
+      <h6 className="text-center">{props.testimonial.subtitle}</h6>
+      <div className="mx-auto my-3" style={{ width: "fit-content" }}>
+        {stars}
+      </div>
+      <p className="text-center text-break mb-5">
+        {'"'}
+        {props.testimonial.desc}
+        {'"'}
+      </p>
+
+      <h6 className="text-center mt-auto">
+        {props.testimonial.date.toDate().toLocaleString()}
+      </h6>
     </div>
   );
 }

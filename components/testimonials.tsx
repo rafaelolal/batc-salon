@@ -29,18 +29,20 @@ export default function Testimonials() {
   const testimonial_components = [];
   for (let i = 0; i < testimonials.length; i++) {
     testimonial_components.push(
-      <div className="col-4">
+      <div className="col-12 col-sm-6 col-md-4 col-xl-3 my-3">
         <Testimonial testimonial={testimonials[i]} />
       </div>
     );
   }
 
-  return <>
-    <div className="col-12 py-5">
+  return (
+    <div className="col-12 my-5">
       <h1 className="text-center text-primary">Testimonials</h1>
-      <div className="row row-cols-1 row-cols-md-3 justify-content-center">
+      <img className="d-flex mx-auto mb-4" src="/images/swirly.png"></img>
+
+      <div className="row mx-2 justify-content-center">
         {testimonial_components}
       </div>
     </div>
-  </>;
+  );
 }

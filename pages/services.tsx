@@ -22,7 +22,7 @@ export default function ServicesPage(props: ServicesProps) {
       <div className=" bg-primary px-2 px-md-4">
         <div
           className="row row-cols-1 row-cols-md-2 p-2 p-md-5 mx-5"
-          style={{ marginBottom: "20%" }}
+          style={{ marginBottom: "10%" }}
         >
           <div className="col">
             <h1 className="text-light text-center text-md-start">
@@ -68,7 +68,7 @@ export default function ServicesPage(props: ServicesProps) {
         </h1>
       </div>
       <div className="bg-primary  px-2 px-md-4">
-        <div className="row row-cols-1 row-cols-md-2 px-2 pb-2 px-md-4 pb-md-5 mx-5 pt-2 ">
+        <div className="row row-cols-1 row-cols-md-2 px-2 pb-1 px-md-4 pb-md-2 mx-5 pt-2 ">
           <div className=" col position-relative">
             <div
               className="card rounded-0 border-0 position-md-absolute"

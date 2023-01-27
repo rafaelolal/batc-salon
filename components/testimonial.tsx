@@ -35,9 +35,9 @@ export default function Testimonial(props: { testimonial: TestimonialType }) {
         {stars}
       </div>
       <p className="text-center text-break mb-5">
-        {'"'}
+        {"\""}
         {props.testimonial.desc}
-        {'"'}
+        {"\""}
       </p>
 
       <h6 className="text-center mt-auto">

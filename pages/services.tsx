@@ -17,7 +17,7 @@ export default function ServicesPage(props: ServicesProps) {
   return (
     <>
       <h1 className="mt-5 pt-5 text-center">Services</h1>
-      <img className="d-flex mx-auto mb-4" src="/images/swirly.png"></img>
+      <Image className="d-flex mx-auto mb-4" width="211" height="30" alt="" src="/images/swirly.png"/>
 
       <div className=" bg-primary px-2 px-md-4">
         <div

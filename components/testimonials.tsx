@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 import { useAppContext } from "../context/state";
+import Image from "next/future/image";
 
 export default function Testimonials() {
   const addToast = useAppContext().addToast;
@@ -38,7 +39,7 @@ export default function Testimonials() {
   return (
     <div className="col-12 my-5">
       <h1 className="text-center text-primary">Testimonials</h1>
-      <img className="d-flex mx-auto mb-4" src="/images/swirly.png"></img>
+      <Image className="d-flex mx-auto mb-4" width="211" height="30" alt="" src="/images/swirly.png"/>
 
       <div className="row mx-2 justify-content-center">
         {testimonial_components}

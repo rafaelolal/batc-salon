@@ -3,7 +3,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { GetServerSideProps } from "next";
 import { db } from "../firebaseConfig";
 import { SectionPropsType } from "../types/servicesPropsTypes";
-import Image from "next/image";
+import Image from "next/future/image";
 
 type ServicesProps = {
   section1: SectionPropsType;
@@ -16,90 +16,164 @@ type ServicesProps = {
 export default function ServicesPage(props: ServicesProps) {
   return (
     <>
-      <h1 className="mt-5 pt-4 text-center">Services</h1>
+      <h1 className="mt-5 pt-5 text-center">Services</h1>
       <img className="d-flex mx-auto mb-4" src="/images/swirly.png"></img>
 
-      <div className=" bg-primary px-5">
+      <div className=" bg-primary px-2 px-md-4">
         <div
-          className="row row-cols-1 row-cols-md-2 p-5 mx-5"
-          style={{ marginBottom: "150px" }}
+          className="row row-cols-1 row-cols-md-2 p-2 p-md-5 mx-5"
+          style={{ marginBottom: "20%" }}
         >
           <div className="col">
-            <h2 className="text-light">What out costumers</h2>
-            <h2 className="text-light">
+            <h1 className="text-light">What out costumers</h1>
+            <h1 className="text-light">
               are <span className="text-secondary">Loving !</span>
-            </h2>
+            </h1>
 
-            <p className="text-light">{props.section1.body}</p>
+            <p className="text-light pe-5">{props.section1.body}</p>
           </div>
 
           <div className="col">
-            <Image
-              alt={props.section1.title}
-              width="500px"
-              height="200px"
-              src={props.section1.imgAddr}
-            />
+            <div
+              className="card rounded-0 border-0"
+              style={{ boxShadow: "0 0 15px rgba(0,0,0, 0.4)", width: "90%" }}
+            >
+              <Image
+                alt={props.section1.title}
+                width="900"
+                height="600"
+                src={props.section1.imgAddr}
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  boxShadow: "0 0 15px rgba(0,0,0, 0.4)",
+                }}
+              />
+              <div
+                className="card-img-overlay m-2 rounded-0"
+                style={{ border: "2px solid #286b3e" }}
+              ></div>
+            </div>
           </div>
         </div>
       </div>
 
-      <h2 className="text-primary ps-5 ms-5">{props.section2.title}</h2>
-      <div className="bg-primary position-relative" style={{ height: "350px" }}>
-        <div className="row row-cols-1 row-cols-md-2 ps-5 pt-2 ">
-          <div className="col">
-            <p className="text-light">{props.section2.body}</p>
+      <div className="px-2 px-md-4">
+        <h1 className="text-primary text-end px-2 mx-5 px-md-4">
+          {props.section2.title}
+        </h1>
+      </div>
+      <div className="bg-primary  px-2 px-md-4">
+        <div className="row row-cols-1 row-cols-md-2 px-2 pb-2 px-md-4 pb-md-5 mx-5 pt-2 ">
+          <div className=" col position-relative">
+            <div
+              className="card rounded-0 border-0 position-md-absolute"
+              style={{
+                boxShadow: "0 0 15px rgba(0,0,0, 0.4)",
+                bottom: "40%",
+                width: "90%",
+              }}
+            >
+              <Image
+                alt={props.section1.title}
+                width="900"
+                height="600"
+                src={props.section2.imgAddr}
+                style={{
+                  width: "100%",
+                  height: "auto",
+                }}
+              />
+              <div
+                className="card-img-overlay m-2 rounded-0"
+                style={{ border: "2px solid #286b3e" }}
+              ></div>
+            </div>
           </div>
-          <div className=" position-absolute end-0" style={{ bottom: "70%" }}>
-            <Image
-              alt={props.section1.title}
-              width="500px"
-              height="200px"
-              src={props.section2.imgAddr}
-            />
+          <div className="col ">
+            <p className="text-light text-end ps-5">{props.section2.body}</p>
           </div>
         </div>
       </div>
 
       <div
-        className="bg-primary position-relative"
-        style={{ height: "200px", marginBottom: "30%" }}
+        className="position-relative p-2 p-md-5"
+        style={{
+          background: "linear-gradient(180deg, #286b3e 20% 50%, #f6f2f1 50%)",
+        }}
       >
-        <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 mx-5 position-absolute">
-          <div className="col text-center">
-            <Image
-              alt={props.offering1.title}
-              width="500px"
-              height="200px"
-              src={props.offering1.imgAddr}
-            />
+        <h1 className="text-light text-center">We Also Offer</h1>
+        <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 justify-content-center m-5 p-2 p-md-5">
+          <div className="col text-center my-5 my-md-0">
+            <div
+              className="card rounded-0 border-0"
+              style={{ boxShadow: "0 0 15px rgba(0,0,0, 0.4)" }}
+            >
+              <Image
+                alt={props.offering1.title}
+                width="375"
+                height="250"
+                src={props.offering1.imgAddr}
+                style={{ width: "100%", height: "auto" }}
+              />
+              <div
+                className="card-img-overlay m-2 rounded-0"
+                style={{ border: "2px solid #286b3e" }}
+              ></div>
+            </div>
             <br />
-            <b>{props.offering1.title}</b>
-            <p>{props.offering1.body}</p>
+            <h6>{props.offering1.title}</h6>
+            <p className="text-secondary px-1 px-lg-5">
+              {props.offering1.body}
+            </p>
           </div>
 
-          <div className="col text-center">
-            <Image
-              alt={props.offering2.title}
-              width="500px"
-              height="200px"
-              src={props.offering2.imgAddr}
-            />
+          <div className="col text-center my-5 my-md-0">
+            <div
+              className="card rounded-0 border-0"
+              style={{ boxShadow: "0 0 15px rgba(0,0,0, 0.4)" }}
+            >
+              <Image
+                alt={props.offering2.title}
+                width="375"
+                height="250"
+                src={props.offering2.imgAddr}
+                style={{ width: "100%", height: "auto" }}
+              />
+              <div
+                className="card-img-overlay m-2 rounded-0"
+                style={{ border: "2px solid #286b3e" }}
+              ></div>
+            </div>
             <br />
-            <b>{props.offering2.title}</b>
-            <p>{props.offering2.body}</p>
+            <h6>{props.offering2.title}</h6>
+            <p className="text-secondary px-1 px-lg-5">
+              {props.offering2.body}
+            </p>
           </div>
 
-          <div className="col text-center">
-            <Image
-              alt={props.offering3.title}
-              width="500px"
-              height="200px"
-              src={props.offering3.imgAddr}
-            />
+          <div className="col text-center my-5 my-md-0 ">
+            <div
+              className="card rounded-0 border-0"
+              style={{ boxShadow: "0 0 15px rgba(0,0,0, 0.4)" }}
+            >
+              <Image
+                alt={props.offering3.title}
+                width="375"
+                height="250"
+                src={props.offering3.imgAddr}
+                style={{ width: "100%", height: "auto" }}
+              />
+              <div
+                className="card-img-overlay m-2 rounded-0"
+                style={{ border: "2px solid #286b3e" }}
+              ></div>
+            </div>
             <br />
-            <b>{props.offering3.title}</b>
-            <p>{props.offering3.body}</p>
+            <h6>{props.offering3.title}</h6>
+            <p className="text-secondary px-1 px-lg-5">
+              {props.offering3.body}
+            </p>
           </div>
         </div>
       </div>

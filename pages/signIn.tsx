@@ -48,7 +48,7 @@ export default function SignInPage() {
       <form className="mx-auto my-auto" onSubmit={submitHandler}>
         <div className="mb-3">
           <label htmlFor="emailInput" className="form-label">
-            Email address
+            Email Address
           </label>
           <input
             type="email"

@@ -36,16 +36,16 @@ export default function Dashboard(props) {
     for (const k in obj) {
       if (typeof obj[k] == "object" && obj[k] !== null) {
         if (level == 1) {
-          myElements.current.push(<h1 className="mb-1 mt-4">{k}</h1>);
+          myElements.current.push(<h1 className="mb-1 mt-5 pt-5 text-primary">{k}</h1>);
         }
         if (level == 2) {
           myElements.current.push(
-            <h2 className={`mb-1 mt-4 ms-${level + 1}`}>{k}</h2>
+            <h2 className={`mb-5 mt-5 ms-${level + 1} text-light bg-primary`}>{k}</h2>
           );
         }
         if (level == 3) {
           myElements.current.push(
-            <h3 className={`mb-1 mt-4 ms-${level + 1}`}>{k}</h3>
+            <h3 className={`mb-1 mt-4 ms-${level + 1} text-primary`}>{k}</h3>
           );
         }
         if (level == 4) {
@@ -100,7 +100,7 @@ export default function Dashboard(props) {
               ref={keyRef}
             />
             <button type="submit" className="btn btn-primary">
-              Submit
+              SUBMIT
             </button>
           </div>
         </div>

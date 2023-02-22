@@ -4,6 +4,7 @@ import { GetServerSideProps } from "next";
 import { db } from "../firebaseConfig";
 import { SectionPropsType } from "../types/servicesPropsTypes";
 import Image from "next/future/image";
+import { useEffect, useState } from "react";
 
 type ServicesProps = {
   section1: SectionPropsType;
@@ -70,7 +71,7 @@ export default function ServicesPage(props: ServicesProps) {
 
       <div className="px-2 px-md-4">
         <h1
-          className="text-primary text-end px-2 mx-5 px-md-4 d-none d-lg-block
+          className="text-primary text-center text-lg-end px-2 mx-5 px-md-4
         
         
         "
@@ -81,9 +82,13 @@ export default function ServicesPage(props: ServicesProps) {
       <div className="bg-primary  px-2 px-md-4">
         <div className="row row-cols-1 row-cols-lg-2 px-2 pb-1 px-md-4 pb-md-2 mx-5 pt-2 ">
           <div className=" col position-relative">
-            <div className="section2Image card rounded-0 border-0">
+            <div
+              className="card rounded-0 border-0 d-none d-lg-block"
+              style={{ width: "85%", bottom: "25%", position: "absolute" }}
+            >
               <Image
-                alt={props.section1.title}
+                id="image2"
+                alt={props.section2.title}
                 width="900"
                 height="600"
                 src={props.section2.imgAddr}
@@ -102,6 +107,28 @@ export default function ServicesPage(props: ServicesProps) {
             <p className="text-light text-center text-lg-end ps-0 ps-lg-5">
               {props.section2.body}
             </p>
+          </div>
+          <div className=" col position-relative">
+            <div
+              className="card rounded-0 border-0 mx-auto d-block d-lg-none mt-5"
+              style={{ width: "85%" }}
+            >
+              <Image
+                id="image2"
+                alt={props.section2.title}
+                width="900"
+                height="600"
+                src={props.section2.imgAddr}
+                style={{
+                  width: "100%",
+                  height: "auto",
+                }}
+              />
+              <div
+                className="card-img-overlay m-2 rounded-0"
+                style={{ border: "2px solid #286b3e" }}
+              ></div>
+            </div>
           </div>
         </div>
       </div>

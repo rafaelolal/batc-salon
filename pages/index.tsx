@@ -13,33 +13,36 @@ import Testimonials from "../components/testimonials";
 type IndexProps = {
   carousel: CarouselPropsType;
   qRCode: QRCodePropsType;
-}
+};
 
 export default function IndexPage(props: IndexProps) {
-  return <>
-    <div id="index-background">
-      <Gallery />
-    </div>
-
-    <div id="index-top" className="top-animated-shown bg-light overflow-auto">
-      <Carousel data={props.carousel} />
-      <QRCode data={props.qRCode} />
-
-      <div className="">
-        <Stylists />
+  return (
+    <>
+      <div id="index-background">
+        <Gallery />
       </div>
-    </div>
 
-    <ViewGalleryButton />
+      <div id="index-top" className="top-animated-shown bg-light overflow-auto">
+        <h1 className="mt-5 text-center">Beauty and the Chic</h1>
+        <Carousel data={props.carousel} />
+        <QRCode data={props.qRCode} />
 
-    <div
-      id="index-bottom"
-      className="bottom-animated-shown bg-light overflow-hidden"
-    >
-      <Testimonials />
-      <Footer />
-    </div>
-  </>;
+        <div className="">
+          <Stylists />
+        </div>
+      </div>
+
+      <ViewGalleryButton />
+
+      <div
+        id="index-bottom"
+        className="bottom-animated-shown bg-light overflow-hidden"
+      >
+        <Testimonials />
+        <Footer />
+      </div>
+    </>
+  );
 }
 
 export const getStaticProps: GetStaticProps = async () => {

@@ -30,7 +30,7 @@ export default function IndexPage(props: IndexProps) {
       </div>
     </div>
 
-      <ViewGalleryButton />
+    <ViewGalleryButton />
 
     <div
       id="index-bottom"

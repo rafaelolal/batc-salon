@@ -100,7 +100,7 @@ export default function Dashboard(props) {
               ref={keyRef}
             />
             <button type="submit" className="btn btn-primary">
-              Submit
+              SUBMIT
             </button>
           </div>
         </div>

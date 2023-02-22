@@ -5,17 +5,17 @@ import { db } from "../firebaseConfig";
 
 const correctKey = "admin";
 
-export default function Dashboard(props) {
+export default function Dashboard(props: any) {
   const { addToast } = useAppContext();
   const [locked, setLocked] = useState(true);
   const [rick, setRick] = useState(false);
-  const myElements = useRef([]);
+  const myElements = useRef<JSX.Element[]>([]);
 
   const keyRef = useRef() as MutableRefObject<HTMLInputElement>;
 
   console.log({ props });
 
-  function signInHandler(event) {
+  function signInHandler(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     if (keyRef.current.value != correctKey) {
@@ -27,12 +27,12 @@ export default function Dashboard(props) {
     eachRecursive(props, 1);
   }
 
-  function handleSubmit(event) {
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setRick(true);
   }
 
-  function eachRecursive(obj, level) {
+  function eachRecursive(obj: any, level: number) {
     for (const k in obj) {
       if (typeof obj[k] == "object" && obj[k] !== null) {
         if (level == 1) {
@@ -65,18 +65,30 @@ export default function Dashboard(props) {
         );
       }
     }
+    // for (let i = 0; i < myElements.current.length - 1; i++) {
+    //   if (
+    //     myElements.current[i].type.includes("h") &&
+    //     myElements.current[i + 1].type.includes("input")
+    //   ) {
+    //     myElements.current.push(
+    //       <button className="btn btn-primary my-3" type="submit">
+    //         Add New
+    //       </button>
+    //     );
+    //   }
+    // }
   }
 
   if (rick) {
     return (
       <div className="d-flex" style={{ height: "94vh" }}>
-        <video
+        {/* <video
           className="mx-auto my-auto"
           autoPlay
           style={{ width: "854px", height: "480" }}
         >
           <source src="/rick.mp4" type="video/mp4" />
-        </video>
+        </video> */}
       </div>
     );
   }
@@ -112,7 +124,11 @@ export default function Dashboard(props) {
     <>
       <form className="container mt-5" onSubmit={handleSubmit}>
         {myElements.current}
-        <button className="btn btn-primary my-5" type="submit">
+        <button
+          // type="submit"
+          type="button"
+          className="btn btn-primary my-5"
+        >
           Submit
         </button>
       </form>
@@ -121,7 +137,7 @@ export default function Dashboard(props) {
 }
 
 export async function getServerSideProps() {
-  const props = { content: {}, stylists: {}, testimonials: {} };
+  const props: any = { content: {}, stylists: {}, testimonials: {} };
   const collectionNames = Object.keys(props);
   const collections = await Promise.all(
     Object.keys(props).map((col) => getDocs(collection(db, col)))

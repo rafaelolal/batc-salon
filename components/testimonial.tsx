@@ -5,7 +5,7 @@ export default function Testimonial(props: { testimonial: TestimonialType }) {
   const stars = [];
   for (let i = 0; i < props.testimonial.rating; i++) {
     stars.push(
-      <Image src="/icons/star.png" width="25px" height="25px" alt="Star" />
+      <Image src="/batc/icons/star.png" width="25px" height="25px" alt="Star" />
     );
   }
 

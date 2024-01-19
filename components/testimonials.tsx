@@ -39,7 +39,7 @@ export default function Testimonials() {
   return <>
     <div className="col-12 my-5">
       <h1 className="text-center text-primary">Testimonials</h1>
-      <Image className="d-flex mx-auto mb-4" width="211" height="30" alt="" src="/images/swirly.png"/>
+      <Image className="d-flex mx-auto mb-4" width="211" height="30" alt="" src="/batc/images/swirly.png"/>
 
       <div className="row mx-2 justify-content-center">
         {testimonial_components}

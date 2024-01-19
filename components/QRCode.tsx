@@ -17,7 +17,7 @@ export default function QRCode(props: { data: QRCodePropsType }) {
             <div className="col-auto d-flex p-0">
               <Image
                 className="mx-auto my-auto"
-                src="/images/qrcode.png"
+                src="/batc/images/qrcode.png"
                 alt="alt 1"
                 height="220"
                 width="220"

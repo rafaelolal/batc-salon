@@ -16,7 +16,7 @@ export default function Footer() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 className="d-block mx-auto mb-1"
-                src="/images/white logo without bg.png"
+                src="/batc/images/white logo without bg.png"
                 height="90px"
                 width="90px"
                 alt="The 'Beauty and the Chic' logo"

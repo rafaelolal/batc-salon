@@ -2,6 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  basePath: '/batc',
   images: {
     domains: ["firebasestorage.googleapis.com"],
   },

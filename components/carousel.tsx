@@ -17,7 +17,7 @@ export default function Carousel(props: { data: CarouselPropsType }) {
             >
               <Image
                 className="card-img mx-auto"
-                src={carousel.image}
+                src={"/batc" + carousel.image}
                 alt="alt 1"
                 style={{ objectFit: "cover" }}
                 fill

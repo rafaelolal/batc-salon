@@ -24,7 +24,7 @@ export default function Stylist(props: StylistProps) {
           alt={`A picture of stylist ${props.name}`}
           width="250"
           height="370"
-          src={`/images/stylists/${props.img}`}
+          src={`/batc/images/stylists/${props.img}`}
         />
         <div className="card-img-overlay d-flex m-2 rounded-0 border border-2">
           <p

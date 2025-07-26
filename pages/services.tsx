@@ -22,7 +22,7 @@ export default function ServicesPage(props: ServicesProps) {
         width="211"
         height="30"
         alt=""
-        src="/images/swirly.png"
+        src="/batc/images/swirly.png"
       />
 
       <div className=" bg-primary px-2 px-md-4">
@@ -52,7 +52,7 @@ export default function ServicesPage(props: ServicesProps) {
                 alt={props.section1.title}
                 width="900"
                 height="600"
-                src={props.section1.imgAddr}
+                src={"/batc" + props.section1.imgAddr}
                 style={{
                   width: "100%",
                   height: "auto",
@@ -86,7 +86,7 @@ export default function ServicesPage(props: ServicesProps) {
                 alt={props.section1.title}
                 width="900"
                 height="600"
-                src={props.section2.imgAddr}
+                src={"/batc" + props.section2.imgAddr}
                 style={{
                   width: "100%",
                   height: "auto",
@@ -123,7 +123,7 @@ export default function ServicesPage(props: ServicesProps) {
                 alt={props.offering1.title}
                 width="375"
                 height="250"
-                src={props.offering1.imgAddr}
+                src={"/batc" + props.offering1.imgAddr}
                 style={{ width: "100%", height: "auto" }}
               />
               <div
@@ -147,7 +147,7 @@ export default function ServicesPage(props: ServicesProps) {
                 alt={props.offering2.title}
                 width="375"
                 height="250"
-                src={props.offering2.imgAddr}
+                src={"/batc" + props.offering2.imgAddr}
                 style={{ width: "100%", height: "auto" }}
               />
               <div
@@ -171,7 +171,7 @@ export default function ServicesPage(props: ServicesProps) {
                 alt={props.offering3.title}
                 width="375"
                 height="250"
-                src={props.offering3.imgAddr}
+                src={"/batc" + props.offering3.imgAddr}
                 style={{ width: "100%", height: "auto" }}
               />
               <div

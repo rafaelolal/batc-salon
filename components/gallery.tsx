@@ -10,7 +10,7 @@ export default function Gallery() {
         <Image
           className="expand"
           key={i}
-          src={`/images/gallery/${i}.jpg`}
+          src={`/batc/images/gallery/${i}.jpg`}
           alt="A previous customer with an amazing haircut"
           width="100"
           height="400"
